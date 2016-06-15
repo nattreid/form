@@ -23,6 +23,6 @@
     },
     "minimum-stability": "stable",
     "autoload": {
-        "files": ["src/Form.php"]
+        "classmap": ["src/"]
     }
 }
