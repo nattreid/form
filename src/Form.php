@@ -30,7 +30,6 @@ class Form extends \Nette\Application\UI\Form {
         parent::__construct($parent, $name);
         $this->setTranslator($translator);
         $this->uploadImageMaxSize = $uploadImageMaxSize;
-        ;
     }
 
     /**
