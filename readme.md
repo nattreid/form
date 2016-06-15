@@ -1,7 +1,7 @@
-# Rozsireny formular pro Nette Framework
+# Rozšířený formulář pro Nette Framework
 Podpora překladů
 
-Nastavit
+Nastavení v **config.neon**
 ```neon
 services:
     - 
@@ -9,6 +9,7 @@ services:
         arguments: [%maxUploadImageSize%]
 ```
 
+Použití v presenteru
 ```php
 /** @var \nattreid\form\IFormFactory @inject */
 public $formFactory;
