@@ -23,6 +23,6 @@
     },
     "minimum-stability": "stable",
     "autoload": {
-        "files": ["scr/Form.php"]
+        "files": ["src/Form.php"]
     }
 }
