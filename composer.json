@@ -21,5 +21,8 @@
     "require-dev": {
         "nette/tester": "~1.6"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "autoload": {
+        "files": ["Form.php"]
+    }
 }
