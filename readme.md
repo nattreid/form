@@ -5,13 +5,13 @@ Nastavení v **config.neon**
 ```neon
 services:
     - 
-        implement: nattreid\form\IFormFactory
+        implement: NAttreid\Form\IFormFactory
         arguments: [%maxUploadImageSize%]
 ```
 
 Použití v presenteru
 ```php
-/** @var \nattreid\form\IFormFactory @inject */
+/** @var \NAttreid\Form\IFormFactory @inject */
 public $formFactory;
 
 function createComponentList(){
