@@ -1,6 +1,6 @@
 <?php
 
-namespace nattreid\form\ImageUpload;
+namespace NAttreid\Form\ImageUpload;
 
 /**
  * Ulozeny obrazek

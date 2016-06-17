@@ -1,6 +1,6 @@
 <?php
 
-namespace nattreid\form\DateRange;
+namespace NAttreid\Form\DateRange;
 
 /**
  * Datum od do

@@ -1,11 +1,11 @@
 <?php
 
-namespace nattreid\form\ImageUpload;
+namespace NAttreid\Form\ImageUpload;
 
 use Nette\Application\IPresenter,
     WebChemistry\Images\AbstractStorage,
     Nette\Http\FileUpload,
-    nattreid\form\Form;
+    NAttreid\Form\Form;
 
 /**
  * Ukladani obrazku ve form

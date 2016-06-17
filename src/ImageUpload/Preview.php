@@ -1,6 +1,6 @@
 <?php
 
-namespace nattreid\form\ImageUpload;
+namespace NAttreid\Form\ImageUpload;
 
 use WebChemistry\Images\AbstractStorage,
     Nette\Utils\Html;

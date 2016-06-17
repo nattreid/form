@@ -1,6 +1,6 @@
 <?php
 
-namespace nattreid\form;
+namespace NAttreid\Form;
 
 /**
  * Datum
