@@ -16,6 +16,7 @@
         "nette/application": "~2.3",
         "webchemistry/images": "~2.1",
         "radekdostal/Nette-DateTimePicker": "~2.2",
+        "kdyby/forms-replicator": "1.2.x-dev",
         "kdyby/translation": "~2.3"
     },
     "require-dev": {

@@ -3,6 +3,9 @@ Podpora překladů
 
 Nastavení v **config.neon**
 ```neon
+extensions:
+    - Kdyby\Replicator\DI\ReplicatorExtension
+
 services:
     - 
         implement: NAttreid\Form\IFormFactory
