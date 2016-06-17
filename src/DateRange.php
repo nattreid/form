@@ -1,6 +1,6 @@
 <?php
 
-namespace NAttreid\Form\DateRange;
+namespace NAttreid\Form;
 
 use Nette\Utils\DateTime;
 
