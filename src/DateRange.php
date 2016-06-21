@@ -2,7 +2,8 @@
 
 namespace NAttreid\Form;
 
-use Nette\Utils\DateTime;
+use Nette\Utils\DateTime,
+    NAttreid\Utils\Range;
 
 /**
  * Interval datumu
