@@ -66,7 +66,7 @@
         }
     };
 
-    var locale = localize[locale];
+    var locale = localize[window.moment.locale()];
     $.fn.daterangepicker.locale = locale.locale;
 
     $(document).on('focus', '.datepicker', function () {
