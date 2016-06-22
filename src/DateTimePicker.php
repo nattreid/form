@@ -19,4 +19,12 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker {
         return $this;
     }
 
+    /**
+     * Nastavi formatovani data
+     * @param string $format
+     */
+    public function setFormat($format) {
+        $this->htmlFormat = $format;
+    }
+
 }

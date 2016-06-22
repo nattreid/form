@@ -10,6 +10,10 @@ services:
     - 
         implement: NAttreid\Form\IFormFactory
         arguments: [%maxUploadImageSize%]
+
+latte:
+    macros:
+        - Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros
 ```
 
 Použití v presenteru
