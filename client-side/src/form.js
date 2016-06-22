@@ -117,7 +117,7 @@
                         }
                     });
             $(this).on('apply.daterangepicker', function (ev, picker) {
-                $(this).val(picker.startDate.format(locale.format.date));
+                $(this).val(picker.startDate.format(locale.format.date + ' ' + locale.format.time));
                 $(this).trigger('change');
             });
         }
