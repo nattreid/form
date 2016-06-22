@@ -7,7 +7,7 @@ namespace NAttreid\Form;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class DatePicker extends \RadekDostal\NetteComponents\DateTimePicker\DatePicker {
+class DatePicker extends \Nextras\Forms\Controls\DatePicker {
 
     /**
      * Nastavi placeholder

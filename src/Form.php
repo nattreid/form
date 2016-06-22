@@ -223,7 +223,7 @@ class Form extends \Nette\Application\UI\Form {
      * @return DatePicker
      */
     public function addDate($name, $label = NULL) {
-        $element = new DatePicker($label, NULL, NULL);
+        $element = new DatePicker($label);
         switch ($this->locale) {
             default:
             case 'cs':
@@ -243,7 +243,7 @@ class Form extends \Nette\Application\UI\Form {
      * @return DateTimePicker
      */
     public function addDateTime($name, $label = NULL) {
-        $element = new DateTimePicker($label, NULL, NULL);
+        $element = new DateTimePicker($label);
         switch ($this->locale) {
             default:
             case 'cs':
@@ -274,6 +274,39 @@ class Form extends \Nette\Application\UI\Form {
                 break;
         }
         return $this[$name] = $element;
+    }
+
+    /**
+     * Option control rendered as radio list
+     * @param string $name
+     * @param string $label
+     * @param array $items
+     * @return \Nextras\Forms\Controls\OptionList
+     */
+    public function addOptionList($name, $label = NULL, array $items = NULL) {
+        return $this[$name] = new \Nextras\Forms\Controls\OptionList($label, $items);
+    }
+
+    /**
+     * Multiple option control rendered as checkbox list
+     * @param string $name
+     * @param string $label
+     * @param array $items
+     * @return \Nextras\Forms\Controls\MultiOptionList
+     */
+    public function addMultiOptionList($name, $label = NULL, array $items = NULL) {
+        return $this[$name] = new \Nextras\Forms\Controls\MultiOptionList($label, $items);
+    }
+
+    /**
+     * Autocomplete
+     * @param string $name
+     * @param string $label
+     * @param type $callback
+     * @return \Nextras\Forms\Controls\Typeahead
+     */
+    public function addTypeahead($name, $label = NULL, $callback = NULL) {
+        return $this[$name] = new Nextras\Forms\Controls\Typeahead($label, $callback);
     }
 
     /**
