@@ -27,4 +27,16 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker {
         $this->htmlFormat = $format;
     }
 
+    /**
+     * {@inheritdoc }
+     */
+    public function getControl() {
+        $this->htmlType = 'text';
+        $control = parent::getControl();
+
+        $control->addClass('form-datetime');
+
+        return $control;
+    }
+
 }
