@@ -27,6 +27,7 @@
                 fromLabel: 'Od',
                 toLabel: 'Do',
                 weekLabel: 'T',
+                monthNames: moment.months(),
                 customRangeLabel: 'Vybrané období'
             },
             ranges: {
@@ -72,15 +73,16 @@
     // datepicker
     $(document).on('focus', '.form-date', function () {
         if (typeof $(this).data('daterangepicker') === 'undefined') {
+            var loc = locale.locale;
+            loc.format = locale.format.date;
+
             $(this).daterangepicker(
                     {
                         showDropdowns: true,
                         autoApply: true,
                         singleDatePicker: true,
                         autoUpdateInput: false,
-                        locale: {
-                            format: locale.format.date
-                        }
+                        locale: loc
                     }
             )
                     .keyup(function (e) {
@@ -98,6 +100,9 @@
     // datetimepicker
     $(document).on('focus', '.form-datetime', function () {
         if (typeof $(this).data('daterangepicker') === 'undefined') {
+            var loc = locale.locale;
+            loc.format = locale.format.date + ' ' + locale.format.time;
+
             $(this).daterangepicker(
                     {
                         showDropdowns: true,
@@ -106,9 +111,7 @@
                         singleDatePicker: true,
                         autoApply: true,
                         autoUpdateInput: false,
-                        locale: {
-                            format: locale.format.date + ' ' + locale.format.time
-                        }
+                        locale: loc
                     }
             )
                     .keyup(function (e) {
@@ -126,15 +129,16 @@
     // daterangepicker
     $(document).on('focus', '.form-daterange', function () {
         if (typeof $(this).data('daterangepicker') === 'undefined') {
+            var loc = locale.locale;
+            loc.format = locale.format.date;
+
             $(this).daterangepicker(
                     {
                         showDropdowns: true,
                         ranges: locale.ranges,
                         autoApply: true,
                         autoUpdateInput: false,
-                        locale: {
-                            format: locale.format.date
-                        }
+                        locale: loc
                     }
             )
                     .keyup(function (e) {
