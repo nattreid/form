@@ -69,7 +69,8 @@
     var locale = localize[window.moment.locale()];
     $.fn.daterangepicker.locale = locale.locale;
 
-    $(document).on('focus', '.datepicker', function () {
+    // datepicker
+    $(document).on('focus', '.form-date', function () {
         if (typeof $(this).data('daterangepicker') === 'undefined') {
             $(this).daterangepicker(
                     {
@@ -93,7 +94,9 @@
             });
         }
     });
-    $(document).on('focus', '.datetimepicker', function () {
+
+    // datetimepicker
+    $(document).on('focus', '.form-datetime', function () {
         if (typeof $(this).data('daterangepicker') === 'undefined') {
             $(this).daterangepicker(
                     {
@@ -119,6 +122,8 @@
             });
         }
     });
+
+    // daterangepicker
     $(document).on('focus', '.form-daterange', function () {
         if (typeof $(this).data('daterangepicker') === 'undefined') {
             $(this).daterangepicker(
