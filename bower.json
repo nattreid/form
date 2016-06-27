@@ -16,13 +16,5 @@
         "jquery": "~1.12",
         "moment": "~2.13",
         "bootstrap-daterangepicker": "~2.0"
-    },
-    "sources": {
-        "jquery": "bower_components/jquery/dist/jquery.min.js",
-        "moment": "bower_components/moment/min/moment-with-locales.min.js",
-        "bootstrap-daterangepicker": [
-            "bower_components/bootstrap-daterangepicker/daterangepicker.css",
-            "bower_components/bootstrap-daterangepicker/daterangepicker.js"
-        ]
     }
 }
