@@ -10,7 +10,7 @@ extensions:
 možná nastavení
 ```neon
 formExtension:
-    maxUploadSize: 5 #MB
+    maxUploadImageSize: 5 #MB
 ```
 
 Použití v presenteru

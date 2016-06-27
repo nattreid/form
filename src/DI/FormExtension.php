@@ -10,23 +10,23 @@ namespace NAttreid\Form\DI;
 class FormExtension extends \Nette\DI\CompilerExtension {
 
     private $defaults = [
-        'maxUploadSize' => 5,
+        'maxUploadImageSize' => 5,
     ];
 
     public function loadConfiguration() {
         $builder = $this->getContainerBuilder();
         $config = $this->validateConfig($this->defaults, $this->getConfig());
 
-        $this->compiler->addExtension('formReplicator', new \Kdyby\Replicator\DI\ReplicatorExtension);
-
         $builder->addDefinition($this->prefix('form'))
-                ->setImplement('NAttreid\Form\IForm')
-                ->setClass('NAttreid\Form\Form')
-                ->setArguments(['%maxUploadSize%'])
-                ->setParameters([['maxUploadSize' => $config['maxUploadSize']]]);
+                ->setImplement('NAttreid\Form\IFormFactory')
+                ->setFactory('NAttreid\Form\Form')
+                ->setArguments([$builder->literal('$maxUploadImageSize')])
+                ->setParameters(['maxUploadImageSize' => $config['maxUploadImageSize']]);
     }
 
     public function beforeCompile() {
+        $this->compiler->addExtension('formReplicator', new \Kdyby\Replicator\DI\ReplicatorExtension);
+        
         $builder = $this->getContainerBuilder();
         $builder->getDefinition('latte.latteFactory')
                 ->addSetup('Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros::install(?->getCompiler())', ['@self']);
