@@ -4,16 +4,13 @@ Podpora překladů
 Nastavení v **config.neon**
 ```neon
 extensions:
-    - Kdyby\Replicator\DI\ReplicatorExtension
+    formExtension: NAttreid\Form\DI\FormExtension
+```
 
-services:
-    - 
-        implement: NAttreid\Form\IFormFactory
-        arguments: [%maxUploadImageSize%]
-
-latte:
-    macros:
-        - Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros
+možná nastavení
+```neon
+formExtension:
+    maxUploadSize: 5 #MB
 ```
 
 Použití v presenteru
