@@ -24,8 +24,7 @@
         "nette/di": "~2.3",
         "nette/application": "~2.3",
         "webchemistry/images": "~2.1",
-        "nextras/forms": "~1.6",
-        "kdyby/translation": "~2.3"
+        "nextras/forms": "~1.6"
     },
     "require-dev": {
         "nette/tester": "~1.6"

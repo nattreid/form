@@ -26,7 +26,7 @@ class Form extends \Nette\Application\UI\Form {
      */
     private $noLiveJsValidate = FALSE;
 
-    public function __construct($uploadImageMaxSize, \Kdyby\Translation\Translator $translator = NULL, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL) {
+    public function __construct($uploadImageMaxSize, \Nette\Localization\ITranslator $translator = NULL, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL) {
         parent::__construct($parent, $name);
         if ($translator != NULL) {
             $this->setTranslator($translator);
