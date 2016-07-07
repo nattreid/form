@@ -2,6 +2,8 @@
 
 namespace NAttreid\Form;
 
+use NAttreid\Utils\Date;
+
 /**
  * {@inheritdoc }
  * 
@@ -12,7 +14,7 @@ class Form extends \Nette\Application\UI\Form {
     CONST PHONE_PATTERN = '((\+|00)?[0-9]{3}\s?)?([0-9]{3}\s?){3}';
 
     /** @persistent */
-    public $locale;
+    private $locale;
 
     /**
      * Maximalni velikost uploadu obrazku
@@ -226,15 +228,7 @@ class Form extends \Nette\Application\UI\Form {
      */
     public function addDate($name, $label = NULL) {
         $element = new DatePicker($label);
-        switch ($this->locale) {
-            default:
-            case 'cs':
-                $element->setFormat('d.m.Y');
-                break;
-            case 'en':
-                $element->setFormat('m/d/Y');
-                break;
-        }
+        $element->setFormat(Date::getFormat(Date::DATE));
         return $this[$name] = $element;
     }
 
@@ -246,15 +240,7 @@ class Form extends \Nette\Application\UI\Form {
      */
     public function addDateTime($name, $label = NULL) {
         $element = new DateTimePicker($label);
-        switch ($this->locale) {
-            default:
-            case 'cs':
-                $element->setFormat('d.m.Y H:i');
-                break;
-            case 'en':
-                $element->setFormat('m/d/Y H:i');
-                break;
-        }
+        $element->setFormat(Date::getFormat(Date::DATETIME));
         return $this[$name] = $element;
     }
 
@@ -266,15 +252,7 @@ class Form extends \Nette\Application\UI\Form {
      */
     public function addDateRange($name, $label = NULL) {
         $element = new DateRange($label);
-        switch ($this->locale) {
-            default:
-            case 'cs':
-                $element->setFormat('d.m.Y');
-                break;
-            case 'en':
-                $element->setFormat('m/d/Y');
-                break;
-        }
+        $element->setFormat(Date::getFormat(Date::DATE));
         return $this[$name] = $element;
     }
 
