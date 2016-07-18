@@ -4,7 +4,6 @@ Podpora překladů
 Nastavení v **config.neon**
 ```neon
 extensions:
-    formReplicator: Kdyby\Replicator\DI\ReplicatorExtension
     formExtension: NAttreid\Form\DI\FormExtension
 ```
 
