@@ -25,8 +25,6 @@ class FormExtension extends \Nette\DI\CompilerExtension {
     }
 
     public function beforeCompile() {
-        $this->compiler->addExtension('formReplicator', new \Kdyby\Replicator\DI\ReplicatorExtension);
-        
         $builder = $this->getContainerBuilder();
         $builder->getDefinition('latte.latteFactory')
                 ->addSetup('Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros::install(?->getCompiler())', ['@self']);
