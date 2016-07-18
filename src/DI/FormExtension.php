@@ -30,7 +30,7 @@ class FormExtension extends \Nette\DI\CompilerExtension {
                 ->addSetup('Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros::install(?->getCompiler())', ['@self']);
     }
 
-    public function afterCompile(Code\ClassType $class) {
+    public function afterCompile(\Nette\PhpGenerator\ClassType $class) {
         (new \Kdyby\Replicator\DI\ReplicatorExtension())->afterCompile($class);
     }
 
