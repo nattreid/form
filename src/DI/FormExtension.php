@@ -2,6 +2,10 @@
 
 namespace NAttreid\Form\DI;
 
+use NAttreid\Form\IFormFactory,
+    NAttreid\Form\Form,
+    Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
+
 /**
  * Rozsireni formulare
  *
@@ -18,8 +22,8 @@ class FormExtension extends \Nette\DI\CompilerExtension {
         $config = $this->validateConfig($this->defaults, $this->getConfig());
 
         $builder->addDefinition($this->prefix('form'))
-                ->setImplement('NAttreid\Form\IFormFactory')
-                ->setFactory('NAttreid\Form\Form')
+                ->setImplement(IFormFactory::class)
+                ->setFactory(Form::class)
                 ->setArguments([$builder->literal('$maxUploadImageSize')])
                 ->setParameters(['maxUploadImageSize' => $config['maxUploadImageSize']]);
     }
@@ -27,7 +31,7 @@ class FormExtension extends \Nette\DI\CompilerExtension {
     public function beforeCompile() {
         $builder = $this->getContainerBuilder();
         $builder->getDefinition('latte.latteFactory')
-                ->addSetup('Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros::install(?->getCompiler())', ['@self']);
+                ->addSetup(BS3InputMacros::class . '::install(?->getCompiler())', ['@self']);
     }
 
     public function afterCompile(\Nette\PhpGenerator\ClassType $class) {
