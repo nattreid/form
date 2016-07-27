@@ -13,9 +13,6 @@ class Form extends \Nette\Application\UI\Form {
 
     CONST PHONE_PATTERN = '((\+|00)?[0-9]{3}\s?)?([0-9]{3}\s?){3}';
 
-    /** @persistent */
-    private $locale;
-
     /**
      * Maximalni velikost uploadu obrazku
      * @var int 
