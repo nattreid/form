@@ -60,6 +60,17 @@ class LinkControl extends \Nette\Forms\Controls\Button {
     }
 
     /**
+     * Changes control's HTML attribute.
+     * @param  string name
+     * @param  mixed  value
+     * @return self
+     */
+    public function setLinkAttribute($name, $value = TRUE) {
+        $this->$name = $value;
+        return $this;
+    }
+
+    /**
      * {@inheritdoc }
      */
     public function getLabel($caption = NULL) {
