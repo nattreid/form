@@ -66,7 +66,7 @@ class LinkControl extends \Nette\Forms\Controls\Button {
      * @return self
      */
     public function setLinkAttribute($name, $value = TRUE) {
-        $this->$name = $value;
+        $this->control->$name = $value;
         return $this;
     }
 
