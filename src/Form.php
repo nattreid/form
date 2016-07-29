@@ -141,14 +141,14 @@ class Form extends \Nette\Application\UI\Form {
     }
 
     /**
-     * Prida Select box s daty z db (neprekladaji se)
+     * Prida Select box s neprelozenymi daty
      * @param string $name
      * @param string $label
      * @param array $items
      * @param string $prompt
      * @return \Nette\Forms\Controls\SelectBox
      */
-    public function addDbSelect($name, $label = NULL, array $items = NULL, $prompt = NULL) {
+    public function addSelectUntranslated($name, $label = NULL, array $items = NULL, $prompt = NULL) {
         $translator = $this->getTranslator();
         if ($translator != NULL && $label !== NULL) {
             $label = $translator->translate($label);
@@ -165,14 +165,14 @@ class Form extends \Nette\Application\UI\Form {
     }
 
     /**
-     * Prida Multi Select box s daty z db (neprekladaji se)
+     * Prida Multi Select box s neprelozenymi daty
      * @param string $name
      * @param string $label
      * @param array $items
      * @param string $prompt
      * @return \Nette\Forms\Controls\MultiSelectBox
      */
-    public function addDbMultiSelect($name, $label = NULL, array $items = NULL, $prompt = NULL) {
+    public function addMultiSelectUntranslated($name, $label = NULL, array $items = NULL, $prompt = NULL) {
         $translator = $this->getTranslator();
         if ($translator != NULL && $label !== NULL) {
             $label = $translator->translate($label);
@@ -189,13 +189,13 @@ class Form extends \Nette\Application\UI\Form {
     }
 
     /**
-     * Prida Checkbox seznam s daty z db (neprekladaji se)
+     * Prida Checkbox seznam s neprelozenymi daty
      * @param string $name
      * @param string $label
      * @param array $items
      * @return \Nette\Forms\Controls\CheckboxList
      */
-    public function addDbCheckboxList($name, $label = NULL, array $items = NULL) {
+    public function addCheckboxListUntranslated($name, $label = NULL, array $items = NULL) {
         $translator = $this->getTranslator();
         if ($translator != NULL && $label !== NULL) {
             $label = $translator->translate($label);
@@ -206,12 +206,12 @@ class Form extends \Nette\Application\UI\Form {
     }
 
     /**
-     * Prida Checkbox s daty z db (neprekladaji se)
+     * Prida Checkbox s neprelozenymi daty
      * @param string $name
      * @param string $caption
      * @return \Nette\Forms\Controls\Checkbox
      */
-    public function addDbCheckbox($name, $caption = NULL) {
+    public function addCheckboxUntranslated($name, $caption = NULL) {
         $element = parent::addCheckbox($name, $caption);
         $element->setTranslator();
         return $element;
