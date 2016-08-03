@@ -17,17 +17,18 @@
     ],
     "require": {
         "php": ">= 5.6",
-        "nette/utils": "~2.3",
         "nattreid/utils": "~1.0",
         "nattreid/forms-replicator": "~1.2",
-        "nette/forms": "~2.3",
-        "nette/di": "~2.3",
-        "nette/application": "~2.3",
-        "webchemistry/images": "~2.1",
+        "nette/forms": "~2.4",
+        "nette/di": "~2.4",
+        "nette/application": "~2.4",
         "nextras/forms": "~1.6"
     },
+    "suggest": {
+        "webchemistry/images": "ImageStorage"
+    },
     "require-dev": {
-        "nette/tester": "~1.6"
+        "nette/tester": "~1.7"
     },
     "autoload": {
         "classmap": ["src/"]
