@@ -57,7 +57,7 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl {
             $this->preview->setParent($form, $form->getName());
             $this->image->setParent($form, $form->getName());
 
-            $form->onValidate[] = $this->onValidate;
+            $form->onValidate[] = [$this, 'onValidate'];
         }
 
         if ($form instanceof IPresenter) {
