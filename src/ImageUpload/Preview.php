@@ -32,8 +32,11 @@ class Preview extends \Nette\Forms\Controls\SubmitButton {
     /** @var boolean */
     private $required = FALSE;
 
-    public function __construct() {
-        parent::__construct('default.form.delete');
+    public function __construct($button) {
+        if ($button == NULL) {
+            $button = 'Delete';
+        }
+        parent::__construct($button);
     }
 
     /**
@@ -41,7 +44,6 @@ class Preview extends \Nette\Forms\Controls\SubmitButton {
      */
     protected function attached($form) {
         parent::attached($form);
-        $this->setAttribute('title', $this->getTranslator()->translate('default.form.deleteImage'));
         $this->setAttribute('class', 'submit-remove');
         $this->setValidationScope(FALSE);
         $this->onClick[] = function(Preview $button) {

@@ -288,10 +288,11 @@ class Form extends \Nette\Application\UI\Form {
      * Prida upload obrazku
      * @param string $name
      * @param string $label
+     * @param string $button
      * @return ImageUpload\ImageUploadControl
      */
-    public function addImageUpload($name, $label = NULL) {
-        return $this[$name] = new ImageUpload\ImageUploadControl($label, $this->uploadImageMaxSize);
+    public function addImageUpload($name, $label = NULL, $button = NULL) {
+        return $this[$name] = new ImageUpload\ImageUploadControl($label, $button, $this->uploadImageMaxSize);
     }
 
     /**
