@@ -12,24 +12,10 @@ use NAttreid\Utils\Date;
 class Form extends \Nette\Application\UI\Form {
 
     /**
-     * Maximalni velikost uploadu obrazku
-     * @var int 
-     */
-    private $uploadImageMaxSize;
-
-    /**
      * Vypnuti live JS validace formulare
      * @var boolean 
      */
     private $noLiveJsValidate = FALSE;
-
-    public function __construct($uploadImageMaxSize, \Nette\Localization\ITranslator $translator = NULL, \Nette\ComponentModel\IContainer $parent = NULL, $name = NULL) {
-        parent::__construct($parent, $name);
-        if ($translator != NULL) {
-            $this->setTranslator($translator);
-        }
-        $this->uploadImageMaxSize = $uploadImageMaxSize;
-    }
 
     /**
      * Nastavi html tridu pro formular
@@ -289,10 +275,11 @@ class Form extends \Nette\Application\UI\Form {
      * @param string $name
      * @param string $label
      * @param string $button
+     * @param int $maxImageSize
      * @return ImageUpload\ImageUploadControl
      */
-    public function addImageUpload($name, $label = NULL, $button = NULL) {
-        return $this[$name] = new ImageUpload\ImageUploadControl($label, $button, $this->uploadImageMaxSize);
+    public function addImageUpload($name, $label = NULL, $button = NULL, $maxImageSize = 15) {
+        return $this[$name] = new ImageUpload\ImageUploadControl($label, $button, $maxImageSize);
     }
 
     /**

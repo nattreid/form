@@ -13,21 +13,6 @@ use NAttreid\Form\IFormFactory,
  */
 class FormExtension extends \Nette\DI\CompilerExtension {
 
-    private $defaults = [
-        'maxUploadImageSize' => 5,
-    ];
-
-    public function loadConfiguration() {
-        $builder = $this->getContainerBuilder();
-        $config = $this->validateConfig($this->defaults, $this->getConfig());
-
-        $builder->addDefinition($this->prefix('form'))
-                ->setImplement(IFormFactory::class)
-                ->setFactory(Form::class)
-                ->setArguments([$builder->literal('$maxUploadImageSize')])
-                ->setParameters(['maxUploadImageSize' => $config['maxUploadImageSize']]);
-    }
-
     public function beforeCompile() {
         $builder = $this->getContainerBuilder();
         $builder->getDefinition('latte.latteFactory')

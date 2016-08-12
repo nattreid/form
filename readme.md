@@ -4,22 +4,14 @@ Podpora překladů
 Nastavení v **config.neon**
 ```neon
 extensions:
-    formExtension: NAttreid\Form\DI\FormExtension
-```
-
-možná nastavení
-```neon
-formExtension:
-    maxUploadImageSize: 5 #MB
+    - NAttreid\Form\DI\FormExtension
 ```
 
 Použití v presenteru
 ```php
-/** @var \NAttreid\Form\IFormFactory @inject */
-public $formFactory;
 
 function createComponentList(){
-    $form = $this->formFactory->create();
+    $form = new Form;
     // php kod ...
     return $form;
 }

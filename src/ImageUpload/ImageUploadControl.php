@@ -34,7 +34,7 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl {
      * @param string $button
      * @param int $maxImageSize
      */
-    public function __construct($label = NULL, $button = NULL, $maxImageSize = 5) {
+    public function __construct($label = NULL, $button = NULL, $maxImageSize = 15) {
         $this->preview = new Preview($button);
         $this->image = new Image;
 
