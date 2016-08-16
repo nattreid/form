@@ -44,7 +44,7 @@ class Preview extends \Nette\Forms\Controls\SubmitButton {
      */
     protected function attached($form) {
         parent::attached($form);
-        $this->setAttribute('class', 'submit-remove');
+        $this->setAttribute('class', 'btn btn-danger');
         $this->setValidationScope(FALSE);
         $this->onClick[] = function(Preview $button) {
             $this->storage->delete($this->image->value);
