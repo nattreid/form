@@ -11,20 +11,14 @@ use Nette\Utils\Html;
  */
 class LinkControl extends \Nette\Forms\Controls\Button {
 
-    /** @var Html */
-    private $button;
-
     /**
-     * 
      * @param string $caption text odkazu
      * @param string $link link odkazu
      */
     public function __construct($caption, $link = NULL) {
         parent::__construct($caption);
         $this->control = Html::el('a');
-        $this->button = Html::el('input');
         $this->link($link);
-        $this->setOmitted(TRUE);
     }
 
     /**
@@ -44,37 +38,21 @@ class LinkControl extends \Nette\Forms\Controls\Button {
      */
     public function setAjaxRequest($ajax = TRUE) {
         if ($ajax) {
-            parent::setAttribute('class', 'ajax');
+            $this->addClass('ajax');
         } else {
-            parent::setAttribute('class', NULL);
+            $this->removeClass('ajax');
         }
         return $this;
     }
 
     /**
-     * {@inheritdoc }
+     * Prida tridu
+     * @param string $class
+     * @return $this
      */
-    public function setAttribute($name, $value = TRUE) {
-        $this->button->$name = $value;
+    public function addClass($class) {
+        $this->getControlPrototype()->addClass($class);
         return $this;
-    }
-
-    /**
-     * Changes control's HTML attribute.
-     * @param  string name
-     * @param  mixed  value
-     * @return self
-     */
-    public function setLinkAttribute($name, $value = TRUE) {
-        $this->control->$name = $value;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc }
-     */
-    public function getLabel($caption = NULL) {
-        return NULL;
     }
 
     /**
@@ -82,12 +60,22 @@ class LinkControl extends \Nette\Forms\Controls\Button {
      */
     public function getControl($caption = NULL) {
         $control = parent::getControl();
-        $this->button->type = 'button';
-        $this->button->value = $this->translate($this->caption);
-        $control->setHtml($this->button);
-        $control->name = NULL;
-        $control->value = NULL;
+        $control->setText($this->translate($this->caption));
         return $control;
+    }
+
+    /**
+     * {@inheritdoc }
+     */
+    public function isOmitted() {
+        return TRUE;
+    }
+
+    /**
+     * {@inheritdoc }
+     */
+    public function getLabel($caption = NULL) {
+        return NULL;
     }
 
 }

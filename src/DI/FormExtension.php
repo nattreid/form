@@ -2,9 +2,7 @@
 
 namespace NAttreid\Form\DI;
 
-use NAttreid\Form\IFormFactory,
-    NAttreid\Form\Form,
-    Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
+use Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
 
 /**
  * Rozsireni formulare
