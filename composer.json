@@ -22,7 +22,7 @@
         "nette/forms": "~2.4",
         "nette/di": "~2.4",
         "nette/application": "~2.4",
-        "nextras/forms": "~1.6"
+        "nattreid/nextras-forms": "~1.6"
     },
     "suggest": {
         "webchemistry/images": "ImageStorage"
