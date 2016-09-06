@@ -76,19 +76,19 @@
             loc.format = locale.format.date;
 
             $(this).daterangepicker(
-                    {
-                        showDropdowns: true,
-                        autoApply: true,
-                        singleDatePicker: true,
-                        autoUpdateInput: false,
-                        locale: loc
-                    }
+                {
+                    showDropdowns: true,
+                    autoApply: true,
+                    singleDatePicker: true,
+                    autoUpdateInput: false,
+                    locale: loc
+                }
             )
-                    .keyup(function (e) {
-                        if (e.keyCode === 46) {
-                            $(this).val('');
-                        }
-                    });
+                .keyup(function (e) {
+                    if (e.keyCode === 46) {
+                        $(this).val('');
+                    }
+                });
             $(this).on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format(locale.format.date));
                 $(this).trigger('change');
@@ -103,21 +103,21 @@
             loc.format = locale.format.date + ' ' + locale.format.time;
 
             $(this).daterangepicker(
-                    {
-                        showDropdowns: true,
-                        timePicker: true,
-                        timePicker24Hour: true,
-                        singleDatePicker: true,
-                        autoApply: true,
-                        autoUpdateInput: false,
-                        locale: loc
-                    }
+                {
+                    showDropdowns: true,
+                    timePicker: true,
+                    timePicker24Hour: true,
+                    singleDatePicker: true,
+                    autoApply: true,
+                    autoUpdateInput: false,
+                    locale: loc
+                }
             )
-                    .keyup(function (e) {
-                        if (e.keyCode === 46) {
-                            $(this).val('');
-                        }
-                    });
+                .keyup(function (e) {
+                    if (e.keyCode === 46) {
+                        $(this).val('');
+                    }
+                });
             $(this).on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format(locale.format.date + ' ' + locale.format.time));
                 $(this).trigger('change');
@@ -132,19 +132,19 @@
             loc.format = locale.format.date;
 
             $(this).daterangepicker(
-                    {
-                        showDropdowns: true,
-                        ranges: locale.ranges,
-                        autoApply: true,
-                        autoUpdateInput: false,
-                        locale: loc
-                    }
+                {
+                    showDropdowns: true,
+                    ranges: locale.ranges,
+                    autoApply: true,
+                    autoUpdateInput: false,
+                    locale: loc
+                }
             )
-                    .keyup(function (e) {
-                        if (e.keyCode === 46) {
-                            $(this).val('');
-                        }
-                    });
+                .keyup(function (e) {
+                    if (e.keyCode === 46) {
+                        $(this).val('');
+                    }
+                });
 
             $(this).on('apply.daterangepicker', function (ev, picker) {
                 $(this).val(picker.startDate.format(locale.format.date) + ' - ' + picker.endDate.format(locale.format.date));

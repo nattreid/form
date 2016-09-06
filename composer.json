@@ -28,7 +28,8 @@
         "webchemistry/images": "ImageStorage"
     },
     "require-dev": {
-        "nette/tester": "~1.7"
+        "nette/tester": "~1.7",
+        "webchemistry/images": "~2.1"
     },
     "autoload": {
         "classmap": ["src/"]
