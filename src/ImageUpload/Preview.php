@@ -140,9 +140,8 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 		if ($this->isOk()) {
 			$container = NULL;
 			if ($this->view) {
-				$container = Html::el('div')->setClass('upload-preview-image-container'); /* @var $container Html */
-
-				/* @var $el Html */
+				/* @var $container Html */
+				$container = Html::el('div')->setClass('upload-preview-image-container');
 				$el = Html::el('img')
 					->setClass('upload-preview-image')
 					->setSrc($this->storage->get($this->imageName, 'x100')->getLink());
