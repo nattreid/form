@@ -9,7 +9,7 @@
         }
     ],
     "main": [
-        "./assets/form.less"
+        "./assets/form.js"
     ],
     "ignore": [
         "/src",
