@@ -19,9 +19,6 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	/** @var string */
 	private $imageName;
 
-	/** @var Image */
-	private $image;
-
 	/** @var AbstractStorage */
 	private $storage;
 
@@ -50,9 +47,6 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 		parent::attached($form);
 		$this->setAttribute('class', 'btn btn-danger');
 		$this->setValidationScope(FALSE);
-		$this->onClick[] = function () {
-			$this->storage->delete($this->image->value);
-		};
 	}
 
 	/**
@@ -78,16 +72,6 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	public function setPrepend($prepend)
 	{
 		$this->prepend = $prepend;
-		return $this;
-	}
-
-	/**
-	 * @param Image $image
-	 * @return self
-	 */
-	public function setImage($image)
-	{
-		$this->image = $image;
 		return $this;
 	}
 

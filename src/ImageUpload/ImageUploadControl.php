@@ -75,7 +75,10 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 
 			$this->preview->setPrepend($this->getHtmlName());
 			$this->preview->setStorage($this->storage);
-			$this->preview->setImage($this->image);
+			$this->preview->onClick[] = function () {
+				$this->storage->delete($this->image->value);
+				$this->value = NULL;
+			};
 		}
 	}
 
