@@ -125,12 +125,12 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 
 	/**
 	 * Nastavi zobrazeni prehledu a moznosti smazani obrazku
-	 * @param boolean $view
+	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview($view = TRUE)
+	public function setPreview($size)
 	{
-		$this->preview->setPreview($view);
+		$this->preview->setPreview($size);
 		return $this;
 	}
 

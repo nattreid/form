@@ -28,8 +28,8 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	/** @var string */
 	private $prepend;
 
-	/** @var boolean */
-	private $view = FALSE;
+	/** @var string */
+	private $size = NULL;
 
 	/** @var boolean */
 	private $required = FALSE;
@@ -113,12 +113,12 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 
 	/**
 	 * Nastavi zobrazeni prehledu a moznosti smazani obrazku
-	 * @param boolean $view
+	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview($view = TRUE)
+	public function setPreview($size)
 	{
-		$this->view = $view;
+		$this->size = $size;
 		return $this;
 	}
 
@@ -139,12 +139,12 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 		$button = parent::getControl($caption);
 		if ($this->isOk()) {
 			$container = NULL;
-			if ($this->view) {
+			if ($this->size !== NULL) {
 				/* @var $container Html */
 				$container = Html::el('div')->setClass('upload-preview-image-container');
 				$el = Html::el('img')
 					->setClass('upload-preview-image')
-					->setSrc($this->storage->get($this->imageName, 'x100')->getLink());
+					->setSrc($this->storage->get($this->imageName, $this->size)->getLink());
 				$container->addHtml($el);
 
 				if (!$this->required) {
