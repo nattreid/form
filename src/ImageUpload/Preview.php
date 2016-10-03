@@ -100,7 +100,7 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview($size)
+	public function setPreview($size = '200x100')
 	{
 		$this->size = $size;
 		return $this;
