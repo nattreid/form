@@ -19,7 +19,7 @@ class Form extends \Nette\Application\UI\Form
 	 * Vypnuti live JS validace formulare
 	 * @var boolean
 	 */
-	private $noLiveJsValidate = FALSE;
+	private $noLiveJsValidate = false;
 
 	/**
 	 * Nastavi html tridu pro formular
@@ -48,7 +48,7 @@ class Form extends \Nette\Application\UI\Form
 	 */
 	public function noLiveJsValidate()
 	{
-		$this->noLiveJsValidate = TRUE;
+		$this->noLiveJsValidate = true;
 		return $this;
 	}
 
@@ -89,7 +89,7 @@ class Form extends \Nette\Application\UI\Form
 	public function addError($message)
 	{
 		$translator = $this->getTranslator();
-		if ($translator !== NULL) {
+		if ($translator !== null) {
 			$message = $translator->translate($message);
 		}
 		parent::addError($message);
@@ -98,7 +98,7 @@ class Form extends \Nette\Application\UI\Form
 	/**
 	 * {@inheritdoc }
 	 */
-	public function addText($name, $label = NULL, $cols = NULL, $maxLength = NULL)
+	public function addText($name, $label = null, $cols = null, $maxLength = null)
 	{
 		$control = new TextInput($label, $maxLength);
 		$control->setAttribute('size', $cols);
@@ -108,7 +108,7 @@ class Form extends \Nette\Application\UI\Form
 	/**
 	 * {@inheritdoc }
 	 */
-	public function addTextArea($name, $label = NULL, $cols = NULL, $rows = NULL)
+	public function addTextArea($name, $label = null, $cols = null, $rows = null)
 	{
 		$control = new TextArea($label);
 		$control->setAttribute('cols', $cols)->setAttribute('rows', $rows);
@@ -122,7 +122,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $link
 	 * @return LinkControl
 	 */
-	public function addLink($name, $caption, $link = NULL)
+	public function addLink($name, $caption, $link = null)
 	{
 		return $this[$name] = new LinkControl($caption, $link);
 	}
@@ -135,15 +135,15 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $prompt
 	 * @return \Nette\Forms\Controls\SelectBox
 	 */
-	public function addSelectUntranslated($name, $label = NULL, array $items = NULL, $prompt = NULL)
+	public function addSelectUntranslated($name, $label = null, array $items = null, $prompt = null)
 	{
 		$translator = $this->getTranslator();
-		if ($translator != NULL && $label !== NULL) {
+		if ($translator != null && $label !== null) {
 			$label = $translator->translate($label);
 		}
 		$element = parent::addSelect($name, $label, $items);
-		if ($prompt !== NULL) {
-			if ($translator != NULL) {
+		if ($prompt !== null) {
+			if ($translator != null) {
 				$prompt = $translator->translate($prompt);
 			}
 			$element->setPrompt($prompt);
@@ -160,15 +160,15 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $prompt
 	 * @return \Nette\Forms\Controls\MultiSelectBox
 	 */
-	public function addMultiSelectUntranslated($name, $label = NULL, array $items = NULL, $prompt = NULL)
+	public function addMultiSelectUntranslated($name, $label = null, array $items = null, $prompt = null)
 	{
 		$translator = $this->getTranslator();
-		if ($translator != NULL && $label !== NULL) {
+		if ($translator != null && $label !== null) {
 			$label = $translator->translate($label);
 		}
 
-		if ($prompt !== NULL) {
-			if ($translator != NULL) {
+		if ($prompt !== null) {
+			if ($translator != null) {
 				$prompt = $translator->translate($prompt);
 			}
 			$items = ['' => $prompt] + $items;
@@ -186,10 +186,10 @@ class Form extends \Nette\Application\UI\Form
 	 * @param array $items
 	 * @return \Nette\Forms\Controls\CheckboxList
 	 */
-	public function addCheckboxListUntranslated($name, $label = NULL, array $items = NULL)
+	public function addCheckboxListUntranslated($name, $label = null, array $items = null)
 	{
 		$translator = $this->getTranslator();
-		if ($translator != NULL && $label !== NULL) {
+		if ($translator != null && $label !== null) {
 			$label = $translator->translate($label);
 		}
 		$element = parent::addCheckboxList($name, $label, $items);
@@ -203,7 +203,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $caption
 	 * @return \Nette\Forms\Controls\Checkbox
 	 */
-	public function addCheckboxUntranslated($name, $caption = NULL)
+	public function addCheckboxUntranslated($name, $caption = null)
 	{
 		$element = parent::addCheckbox($name, $caption);
 		$element->setTranslator();
@@ -216,7 +216,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @return DatePicker
 	 */
-	public function addDate($name, $label = NULL)
+	public function addDate($name, $label = null)
 	{
 		$element = new DatePicker($label);
 		$element->setFormat(Date::getFormat(Date::DATE));
@@ -229,7 +229,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @return DateTimePicker
 	 */
-	public function addDateTime($name, $label = NULL)
+	public function addDateTime($name, $label = null)
 	{
 		$element = new DateTimePicker($label);
 		$element->setFormat(Date::getFormat(Date::DATETIME));
@@ -242,7 +242,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @return DateRange
 	 */
-	public function addDateRange($name, $label = NULL)
+	public function addDateRange($name, $label = null)
 	{
 		$element = new DateRange($label);
 		$element->setFormat(Date::getFormat(Date::DATE));
@@ -257,7 +257,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param callback $callback
 	 * @return Typeahead
 	 */
-	public function addTypeahead($name, $label = NULL, $callback = NULL)
+	public function addTypeahead($name, $label = null, $callback = null)
 	{
 		return $this[$name] = new Typeahead($label, $callback);
 	}
@@ -270,7 +270,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param int $maxImageSize
 	 * @return ImageUpload\ImageUploadControl
 	 */
-	public function addImageUpload($name, $label = NULL, $button = NULL, $maxImageSize = 15)
+	public function addImageUpload($name, $label = null, $button = null, $maxImageSize = 15)
 	{
 		return $this[$name] = new ImageUpload\ImageUploadControl($label, $button, $maxImageSize);
 	}
@@ -283,7 +283,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param int $rows
 	 * @return \Nette\Forms\Controls\TextArea
 	 */
-	public function addTextEditor($name, $label = NULL, $cols = NULL, $rows = NULL)
+	public function addTextEditor($name, $label = null, $cols = null, $rows = null)
 	{
 		return parent::addTextArea($name, $label, $cols, $rows)
 			->setAttribute('class', 'ckeditor');

@@ -28,14 +28,14 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 	private $namespace;
 
 	/** @var boolean */
-	private $isValidated = FALSE;
+	private $isValidated = false;
 
 	/**
 	 * @param string $label
 	 * @param string $button
 	 * @param int $maxImageSize
 	 */
-	public function __construct($label = NULL, $button = NULL, $maxImageSize = 15)
+	public function __construct($label = null, $button = null, $maxImageSize = 15)
 	{
 		$this->preview = new Preview($button);
 		$this->image = new Image;
@@ -44,7 +44,7 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 
 		$this->addCondition(Form::FILLED)
 			->addRule(Form::IMAGE)
-			->addRule(Form::MAX_FILE_SIZE, NULL, $maxImageSize * 1024 * 1024 /* v bytech */)
+			->addRule(Form::MAX_FILE_SIZE, null, $maxImageSize * 1024 * 1024 /* v bytech */)
 			->endCondition();
 
 		$this->monitor('Nette\Application\IPresenter');
@@ -77,7 +77,7 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 			$this->preview->setStorage($this->storage);
 			$this->preview->onClick[] = function () {
 				$this->storage->delete($this->image->value);
-				$this->value = NULL;
+				$this->value = null;
 			};
 		}
 	}
@@ -105,13 +105,13 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 		parent::loadHttpData();
 
 		$this->validate();
-		$this->isValidated = TRUE;
+		$this->isValidated = true;
 
 		$this->preview->loadHttpData();
 		$this->image->loadHttpData();
 
 		if (!$this->value->isOk()) {
-			$this->value = NULL;
+			$this->value = null;
 		}
 	}
 
@@ -140,7 +140,7 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 	/**
 	 * {@inheritdoc }
 	 */
-	public function setRequired($value = TRUE)
+	public function setRequired($value = true)
 	{
 		$this->preview->setRequired($value);
 		return parent::setRequired($value);

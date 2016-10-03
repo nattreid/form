@@ -24,7 +24,7 @@ class TextInput extends \Nette\Forms\Controls\TextInput
 	 * @param boolean $disable
 	 * @return self
 	 */
-	public function disableAutocomplete($disable = TRUE)
+	public function disableAutocomplete($disable = true)
 	{
 		$this->setAttribute('autocomplete', $disable ? 'off' : 'on');
 		return $this;

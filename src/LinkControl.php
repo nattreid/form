@@ -16,7 +16,7 @@ class LinkControl extends \Nette\Forms\Controls\Button
 	 * @param string $caption text odkazu
 	 * @param string $link link odkazu
 	 */
-	public function __construct($caption, $link = NULL)
+	public function __construct($caption, $link = null)
 	{
 		parent::__construct($caption);
 		$this->control = Html::el('a');
@@ -58,7 +58,7 @@ class LinkControl extends \Nette\Forms\Controls\Button
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getControl($caption = NULL)
+	public function getControl($caption = null)
 	{
 		$control = parent::getControl();
 		$control->setText($this->translate($this->caption));
@@ -70,15 +70,15 @@ class LinkControl extends \Nette\Forms\Controls\Button
 	 */
 	public function isOmitted()
 	{
-		return TRUE;
+		return true;
 	}
 
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getLabel($caption = NULL)
+	public function getLabel($caption = null)
 	{
-		return NULL;
+		return null;
 	}
 
 }

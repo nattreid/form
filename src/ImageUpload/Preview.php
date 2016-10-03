@@ -26,14 +26,14 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	private $prepend;
 
 	/** @var string */
-	private $size = NULL;
+	private $size = null;
 
 	/** @var boolean */
-	private $required = FALSE;
+	private $required = false;
 
 	public function __construct($button)
 	{
-		if ($button == NULL) {
+		if ($button == null) {
 			$button = 'Delete';
 		}
 		parent::__construct($button);
@@ -46,7 +46,7 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	{
 		parent::attached($form);
 		$this->setAttribute('class', 'btn btn-danger');
-		$this->setValidationScope(FALSE);
+		$this->setValidationScope(false);
 	}
 
 	/**
@@ -109,7 +109,7 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	/**
 	 * {@inheritdoc }
 	 */
-	public function setRequired($value = TRUE)
+	public function setRequired($value = true)
 	{
 		$this->required = $value;
 		return $this;
@@ -118,12 +118,12 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getControl($caption = NULL)
+	public function getControl($caption = null)
 	{
 		$button = parent::getControl($caption);
 		if ($this->isOk()) {
-			$container = NULL;
-			if ($this->size !== NULL) {
+			$container = null;
+			if ($this->size !== null) {
 				/* @var $container Html */
 				$container = Html::el('div')->setClass('upload-preview-image-container');
 				$el = Html::el('img')
@@ -137,7 +137,7 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 			}
 			return $container;
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -148,7 +148,7 @@ class Preview extends \Nette\Forms\Controls\SubmitButton
 	{
 		$image = $this->storage->createImage();
 		$image->setAbsoluteName($this->imageName);
-		$image->setDefaultImage(NULL);
+		$image->setDefaultImage(null);
 
 		return $image;
 	}

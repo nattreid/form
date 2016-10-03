@@ -20,9 +20,9 @@ class DateRange extends \Nette\Forms\Controls\TextInput
 	private $format = 'd.m.Y';
 	private $delimiter = ' - ';
 
-	public function __construct($label = NULL)
+	public function __construct($label = null)
 	{
-		parent::__construct($label, NULL);
+		parent::__construct($label, null);
 	}
 
 	/**
@@ -45,7 +45,7 @@ class DateRange extends \Nette\Forms\Controls\TextInput
 
 	/**
 	 * Vrati pole intervalu datumu
-	 * @return Range|NULL
+	 * @return Range|null
 	 */
 	public function getValue()
 	{
@@ -58,7 +58,7 @@ class DateRange extends \Nette\Forms\Controls\TextInput
 
 			return $result;
 		} else {
-			return NULL;
+			return null;
 		}
 	}
 
@@ -85,7 +85,7 @@ class DateRange extends \Nette\Forms\Controls\TextInput
 		$control = parent::getControl();
 
 		$control->class = 'form-daterange form-control';
-		$control->readonly = TRUE;
+		$control->readonly = true;
 
 		return $control;
 	}
