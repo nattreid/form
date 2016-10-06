@@ -288,12 +288,4 @@ class Form extends \Nette\Application\UI\Form
 		return parent::addTextArea($name, $label, $cols, $rows)
 			->setAttribute('class', 'ckeditor');
 	}
-
-}
-
-interface IFormFactory
-{
-
-	/** @return Form */
-	public function create();
 }
