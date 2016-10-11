@@ -4,7 +4,13 @@ Podpora překladů
 Nastavení v **config.neon**
 ```neon
 extensions:
-    - NAttreid\Form\DI\FormExtension
+    formExt: NAttreid\Form\DI\FormExtension
+```
+
+Vypnutí BS3 maker
+```neon
+formExt:
+    BS3Macros: false
 ```
 
 Použití v presenteru
