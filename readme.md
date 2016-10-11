@@ -7,10 +7,10 @@ extensions:
     formExt: NAttreid\Form\DI\FormExtension
 ```
 
-Vypnutí BS3 maker
+Zapnuti BS3 input
 ```neon
 formExt:
-    BS3Macros: false
+    BS3Macros: true
 ```
 
 Použití v presenteru

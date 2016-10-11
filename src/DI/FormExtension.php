@@ -12,7 +12,7 @@ use Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
 class FormExtension extends \Nette\DI\CompilerExtension
 {
 	private $defaults = [
-		'BS3Macros' => true
+		'BS3Macros' => false
 	];
 
 	public function beforeCompile()
