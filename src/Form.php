@@ -8,6 +8,7 @@ use NAttreid\Form\Control\DateRange;
 use NAttreid\Form\Control\DateTimePicker;
 use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
+use NAttreid\Form\Control\PhoneInput;
 use NAttreid\Form\Control\TextArea;
 use NAttreid\Form\Control\TextInput;
 use NAttreid\Utils\Date;
@@ -26,7 +27,7 @@ use Nextras\Forms\Controls\Typeahead;
  */
 class Form extends NForm
 {
-	
+
 	/**
 	 * Vypnuti live JS validace formulare
 	 * @var boolean
@@ -299,5 +300,16 @@ class Form extends NForm
 	{
 		return parent::addTextArea($name, $label, $cols, $rows)
 			->setAttribute('class', 'ckeditor');
+	}
+
+	/**
+	 * Prida telefon
+	 * @param string $name
+	 * @param string $label
+	 * @return PhoneInput
+	 */
+	public function addPhone($name, $label = null)
+	{
+		return $this[$name] = new PhoneInput($label);
 	}
 }
