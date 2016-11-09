@@ -1,6 +1,6 @@
 <?php
 
-namespace NAttreid\Form;
+namespace NAttreid\Form\Control;
 
 /**
  * {@inheritdoc }

@@ -1,13 +1,14 @@
 <?php
 
-namespace NAttreid\Form\ImageUpload;
+namespace NAttreid\Form\Control\ImageUpload;
+use Nette\Forms\Controls\HiddenField;
 
 /**
  * Ulozeny obrazek
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Image extends \Nette\Forms\Controls\HiddenField
+class Image extends HiddenField
 {
 
 	const NAME = '_uploaded';

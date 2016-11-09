@@ -1,9 +1,11 @@
 <?php
 
-namespace NAttreid\Form\ImageUpload;
+namespace NAttreid\Form\Control\ImageUpload;
 
 use NAttreid\Form\Form;
 use Nette\Application\IPresenter;
+use Nette\Forms\Controls\BaseControl;
+use Nette\Forms\Controls\UploadControl;
 use Nette\Http\FileUpload;
 use WebChemistry\Images\AbstractStorage;
 
@@ -12,7 +14,7 @@ use WebChemistry\Images\AbstractStorage;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
+class ImageUploadControl extends UploadControl
 {
 
 	/** @var Preview */
@@ -172,7 +174,7 @@ class ImageUploadControl extends \Nette\Forms\Controls\UploadControl
 	 */
 	public function setValue($value)
 	{
-		\Nette\Forms\Controls\BaseControl::setValue($value);
+		BaseControl::setValue($value);
 	}
 
 }

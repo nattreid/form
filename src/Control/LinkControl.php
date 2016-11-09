@@ -1,7 +1,8 @@
 <?php
 
-namespace NAttreid\Form;
+namespace NAttreid\Form\Control;
 
+use Nette\Forms\Controls\Button;
 use Nette\Utils\Html;
 
 /**
@@ -9,7 +10,7 @@ use Nette\Utils\Html;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class LinkControl extends \Nette\Forms\Controls\Button
+class LinkControl extends Button
 {
 
 	/**

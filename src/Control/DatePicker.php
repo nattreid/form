@@ -1,13 +1,13 @@
 <?php
 
-namespace NAttreid\Form;
+namespace NAttreid\Form\Control;
 
 /**
- * Datum a cas
+ * Datum
  *
  * @author Attreid <attreid@gmail.com>
  */
-class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
+class DatePicker extends \Nextras\Forms\Controls\DatePicker
 {
 
 	/**
@@ -38,7 +38,7 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 		$this->htmlType = 'text';
 		$control = parent::getControl();
 
-		$control->addClass('form-datetime');
+		$control->addClass('form-date');
 
 		return $control;
 	}

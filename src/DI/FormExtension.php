@@ -2,6 +2,9 @@
 
 namespace NAttreid\Form\DI;
 
+use Kdyby\Replicator\DI\ReplicatorExtension;
+use Nette\DI\CompilerExtension;
+use Nette\PhpGenerator\ClassType;
 use Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
 
 /**
@@ -9,7 +12,7 @@ use Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class FormExtension extends \Nette\DI\CompilerExtension
+class FormExtension extends CompilerExtension
 {
 	private $defaults = [
 		'BS3Macros' => false
@@ -26,9 +29,9 @@ class FormExtension extends \Nette\DI\CompilerExtension
 		}
 	}
 
-	public function afterCompile(\Nette\PhpGenerator\ClassType $class)
+	public function afterCompile(ClassType $class)
 	{
-		(new \Kdyby\Replicator\DI\ReplicatorExtension())->afterCompile($class);
+		(new ReplicatorExtension())->afterCompile($class);
 	}
 
 }

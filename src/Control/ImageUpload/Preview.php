@@ -1,7 +1,8 @@
 <?php
 
-namespace NAttreid\Form\ImageUpload;
+namespace NAttreid\Form\Control\ImageUpload;
 
+use Nette\Forms\Controls\SubmitButton;
 use Nette\Utils\Html;
 use WebChemistry\Images\AbstractStorage;
 use WebChemistry\Images\Image\PropertyAccess;
@@ -11,7 +12,7 @@ use WebChemistry\Images\Image\PropertyAccess;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Preview extends \Nette\Forms\Controls\SubmitButton
+class Preview extends SubmitButton
 {
 
 	const NAME = '_preview';

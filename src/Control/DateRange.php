@@ -1,8 +1,10 @@
 <?php
 
-namespace NAttreid\Form;
+namespace NAttreid\Form\Control;
 
 use NAttreid\Utils\Range;
+use Nette\Forms\Controls\TextBase;
+use Nette\Forms\Controls\TextInput;
 use Nette\Utils\DateTime;
 
 /**
@@ -10,7 +12,7 @@ use Nette\Utils\DateTime;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class DateRange extends \Nette\Forms\Controls\TextInput
+class DateRange extends TextInput
 {
 
 	/**
@@ -65,14 +67,15 @@ class DateRange extends \Nette\Forms\Controls\TextInput
 	/**
 	 * Nastavi hodnotu
 	 * @param Range|string $value
+	 * @return TextBase
 	 */
 	public function setValue($value)
 	{
 		if ($value instanceof Range) {
 			$str = $value->from->format($this->format) . $this->delimiter . $value->to->format($this->format);
-			parent::setValue($str);
+			return parent::setValue($str);
 		} else {
-			parent::setValue($value);
+			return parent::setValue($value);
 		}
 	}
 

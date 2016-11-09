@@ -3,7 +3,19 @@
 namespace NAttreid\Form;
 
 use Kdyby\Replicator\Container;
+use NAttreid\Form\Control\DatePicker;
+use NAttreid\Form\Control\DateRange;
+use NAttreid\Form\Control\DateTimePicker;
+use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
+use NAttreid\Form\Control\LinkControl;
+use NAttreid\Form\Control\TextArea;
+use NAttreid\Form\Control\TextInput;
 use NAttreid\Utils\Date;
+use Nette\Application\UI\Form as NForm;
+use Nette\Forms\Controls\BaseControl;
+use Nette\Forms\Controls\Checkbox;
+use Nette\Forms\Controls\CheckboxList;
+use Nette\Forms\Controls\TextArea as NTextArea;
 use Nextras\Forms\Controls\Typeahead;
 
 /**
@@ -12,7 +24,7 @@ use Nextras\Forms\Controls\Typeahead;
  * @method Container addDynamic($name, callable $callable) Callable function(\Nette\Forms\Container $item){
  * }
  */
-class Form extends \Nette\Application\UI\Form
+class Form extends NForm
 {
 
 	/**
@@ -69,7 +81,7 @@ class Form extends \Nette\Application\UI\Form
 	{
 		if ($this->noLiveJsValidate) {
 			foreach ($this->getControls() as $control) {
-				if ($control instanceof \Nette\Forms\Controls\BaseControl) {
+				if ($control instanceof BaseControl) {
 					$prototype = $control->getControlPrototype();
 					if ($prototype->class) {
 						$class = $prototype->class;
@@ -184,7 +196,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $name
 	 * @param string $label
 	 * @param array $items
-	 * @return \Nette\Forms\Controls\CheckboxList
+	 * @return CheckboxList
 	 */
 	public function addCheckboxListUntranslated($name, $label = null, array $items = null)
 	{
@@ -201,7 +213,7 @@ class Form extends \Nette\Application\UI\Form
 	 * Prida Checkbox s neprelozenymi daty
 	 * @param string $name
 	 * @param string $caption
-	 * @return \Nette\Forms\Controls\Checkbox
+	 * @return Checkbox
 	 */
 	public function addCheckboxUntranslated($name, $caption = null)
 	{
@@ -268,11 +280,11 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @param string $button
 	 * @param int $maxImageSize
-	 * @return ImageUpload\ImageUploadControl
+	 * @return ImageUploadControl
 	 */
 	public function addImageUpload($name, $label = null, $button = null, $maxImageSize = 15)
 	{
-		return $this[$name] = new ImageUpload\ImageUploadControl($label, $button, $maxImageSize);
+		return $this[$name] = new ImageUploadControl($label, $button, $maxImageSize);
 	}
 
 	/**
@@ -281,7 +293,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @param int $cols
 	 * @param int $rows
-	 * @return \Nette\Forms\Controls\TextArea
+	 * @return NTextArea
 	 */
 	public function addTextEditor($name, $label = null, $cols = null, $rows = null)
 	{
