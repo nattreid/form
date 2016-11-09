@@ -1,12 +1,12 @@
-(function ($, window, Nette) {
+(function ($, window) {
     if (window.jQuery === undefined) {
-        console.error('Plugin "jQuery" required by "form.js" is missing!');
+        console.error('Plugin "jQuery" required by "daterangepicker.js" is missing!');
         return;
     } else if (window.moment === undefined) {
-        console.error('Plugin "moment.js" required by "form.js" is missing!');
+        console.error('Plugin "moment.js" required by "daterangepicker.js" is missing!');
         return;
     } else if ($.fn.daterangepicker === undefined) {
-        console.error('Plugin "bootstrap-daterangepicker.js" required by "form.js" is missing!');
+        console.error('Plugin "bootstrap-daterangepicker.js" required by "daterangepicker.js" is missing!');
         return;
     }
 
@@ -153,6 +153,13 @@
         }
     });
 
+})(jQuery, window);
+(function ($, window, Nette) {
+    if (window.jQuery === undefined) {
+        console.error('Plugin "jQuery" required by "nextras.js" is missing!');
+        return;
+    }
+
     // nextras form
     Nette.getValuePrototype = Nette.getValue;
     Nette.getValue = function (elem) {
@@ -182,5 +189,7 @@
     });
 
 })(jQuery, window, Nette);
-
-
+Nette.validators.NAttreidFormRules_validatePhone = function (elem, arg, value) {
+    var regexp = /^\(?\+?([0-9]{1,4})\)?[-\. ]?(\d{3})[-\. ]?([0-9]{7})$/;
+    return regexp.test('value');
+};

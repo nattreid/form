@@ -1,18 +1,31 @@
 var gulp = require('gulp'),
-        uglify = require('gulp-uglify'),
-        rename = require('gulp-rename');
+    concat = require('gulp-concat'),
+    uglify = require('gulp-uglify');
 
-var path = './assets/';
+var paths = {
+    'dev': {
+        'js': './resources/assets/js/'
+    },
+    'production': {
+        'js': './assets/js'
+    }
+};
 
 gulp.task('js', function () {
-    return gulp.src(path + 'form.js')
-            .pipe(rename({suffix: '.min'}))
-            .pipe(uglify())
-            .pipe(gulp.dest(path));
+    return gulp.src(paths.dev.js + '*.js')
+        .pipe(concat('form.js'))
+        .pipe(gulp.dest(paths.production.js));
+});
+
+gulp.task('jsMin', function () {
+    return gulp.src(paths.dev.js + '*.js')
+        .pipe(concat('form.min.js'))
+        .pipe(uglify())
+        .pipe(gulp.dest(paths.production.js));
 });
 
 gulp.task('watch', function () {
-    gulp.watch(path + 'form.js', ['js']);
+    gulp.watch(paths.dev.js + '*.js', ['js', 'jsMin']);
 });
 
-gulp.task('default', ['js', 'watch']); 
+gulp.task('default', ['js', 'jsMin', 'watch']);
