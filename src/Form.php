@@ -26,7 +26,7 @@ use Nextras\Forms\Controls\Typeahead;
  */
 class Form extends NForm
 {
-
+	
 	/**
 	 * Vypnuti live JS validace formulare
 	 * @var boolean

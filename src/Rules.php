@@ -3,6 +3,7 @@
 namespace NAttreid\Form;
 
 use Nette\Forms\IControl;
+use Nette\Utils\Strings;
 
 /**
  * Class Rules
@@ -11,7 +12,8 @@ use Nette\Forms\IControl;
  */
 class Rules
 {
-	const PHONE = 'NAttreid\Form\Rules::validatePhone';
+	const
+		PHONE = 'NAttreid\Form\Rules::validatePhone';
 
 	/**
 	 * Validace telefoniho cisla
@@ -20,6 +22,7 @@ class Rules
 	 */
 	public static function validatePhone(IControl $control)
 	{
-		return preg_match('/^\(?\+?([0-9]{1,4})\)?[-\. ]?(\d{3})[-\. ]?([0-9]{7})$/', trim($control->getValue()));
+		$value = Strings::replace($control->getValue(), '/[-\.\s]/');
+		return preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{9,16})$/', $value);
 	}
 }
