@@ -48,14 +48,14 @@ class PhoneInput extends TextInput
 	public function validate()
 	{
 		parent::validate();
-		$valide = $this->getValue()->validate();
-		if (!$valide) {
-			$rule = new Rule;
-			$rule->control = $this;
-			$rule->validator = Rules::PHONE;
-			$this->addError(Validator::formatMessage($rule));
+		$value = $this->getValue();
+		if ($value !== null) {
+			if (!$value->validate()) {
+				$rule = new Rule;
+				$rule->control = $this;
+				$rule->validator = Rules::PHONE;
+				$this->addError(Validator::formatMessage($rule));
+			}
 		}
 	}
-
-
 }
