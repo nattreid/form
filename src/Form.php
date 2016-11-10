@@ -8,7 +8,7 @@ use NAttreid\Form\Control\DateRange;
 use NAttreid\Form\Control\DateTimePicker;
 use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
-use NAttreid\Form\Control\PhoneInput;
+use NAttreid\Form\Control\PhoneInput\PhoneInput;
 use NAttreid\Form\Control\TextArea;
 use NAttreid\Form\Control\TextInput;
 use NAttreid\Utils\Date;

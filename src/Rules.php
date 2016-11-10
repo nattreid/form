@@ -2,8 +2,8 @@
 
 namespace NAttreid\Form;
 
+use NAttreid\Form\Control\PhoneInput\PhoneNumber;
 use Nette\Forms\IControl;
-use Nette\Utils\Strings;
 
 /**
  * Class Rules
@@ -22,7 +22,6 @@ class Rules
 	 */
 	public static function validatePhone(IControl $control)
 	{
-		$value = Strings::replace($control->getValue(), '/[-\.\s]/');
-		return preg_match('/^(\(?\+?([0-9]{1,4})\)?)?([0-9]{9,16})$/', $value);
+		return PhoneNumber::validatePhone($control->getValue());
 	}
 }
