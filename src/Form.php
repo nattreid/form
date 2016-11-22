@@ -9,14 +9,12 @@ use NAttreid\Form\Control\DateTimePicker;
 use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
 use NAttreid\Form\Control\PhoneInput\PhoneInput;
-use NAttreid\Form\Control\TextArea;
 use NAttreid\Form\Control\TextInput;
 use NAttreid\Utils\Date;
-use Nette\Application\UI\Form as NForm;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;
-use Nette\Forms\Controls\TextArea as NTextArea;
+use Nette\Forms\Controls\TextArea;
 use Nextras\Forms\Controls\Typeahead;
 
 /**
@@ -25,7 +23,7 @@ use Nextras\Forms\Controls\Typeahead;
  * @method Container addDynamic($name, callable $callable) Callable function(\Nette\Forms\Container $item){
  * }
  */
-class Form extends NForm
+class Form extends \Nette\Application\UI\Form
 {
 
 	/**
@@ -110,6 +108,7 @@ class Form extends NForm
 
 	/**
 	 * {@inheritdoc }
+	 * @return TextInput
 	 */
 	public function addText($name, $label = null, $cols = null, $maxLength = null)
 	{
@@ -120,6 +119,7 @@ class Form extends NForm
 
 	/**
 	 * {@inheritdoc }
+	 * @return TextArea
 	 */
 	public function addTextArea($name, $label = null, $cols = null, $rows = null)
 	{
@@ -130,6 +130,7 @@ class Form extends NForm
 
 	/**
 	 * {@inheritdoc }
+	 * @return TextInput
 	 */
 	public function addPassword($name, $label = NULL, $cols = NULL, $maxLength = NULL)
 	{
