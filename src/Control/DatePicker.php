@@ -2,6 +2,8 @@
 
 namespace NAttreid\Form\Control;
 
+use NAttreid\Form\Traits\Input;
+
 /**
  * Datum
  *
@@ -9,17 +11,7 @@ namespace NAttreid\Form\Control;
  */
 class DatePicker extends \Nextras\Forms\Controls\DatePicker
 {
-
-	/**
-	 * Nastavi placeholder
-	 * @param string $value
-	 * @return self
-	 */
-	public function setPlaceholder($value)
-	{
-		$this->setAttribute('placeholder', $value);
-		return $this;
-	}
+	use Input;
 
 	/**
 	 * Nastavi formatovani data

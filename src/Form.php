@@ -129,6 +129,16 @@ class Form extends NForm
 	}
 
 	/**
+	 * {@inheritdoc }
+	 */
+	public function addPassword($name, $label = NULL, $cols = NULL, $maxLength = NULL)
+	{
+		return $this[$name] = (new TextInput($label, $maxLength))
+			->setType('password')
+			->setAttribute('size', $cols);
+	}
+
+	/**
 	 * Prida odkaz do formulare
 	 * @param string $name
 	 * @param string $caption
