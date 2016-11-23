@@ -23,7 +23,8 @@ class FormExtension extends CompilerExtension
 	{
 		$builder = $this->getContainerBuilder();
 		$builder->addDefinition($this->prefix('factory'))
-			->setClass(FormFactory::class);
+			->setClass(FormFactory::class)
+			->setAutowired(false);
 	}
 
 	public function beforeCompile()
