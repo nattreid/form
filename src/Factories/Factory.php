@@ -1,20 +1,18 @@
 <?php
 
-namespace NAttreid\Form;
+namespace NAttreid\Form\Factories;
 
+use NAttreid\Form\Form;
 use Nette\ComponentModel\IContainer;
 use Nette\Localization\ITranslator;
-use Nette\SmartObject;
 
 /**
  * Tovarna na formular
  *
  * @author Attreid <attreid@gmail.com>
  */
-class FormFactory
+abstract class Factory
 {
-	use SmartObject;
-
 	/** @var ITranslator */
 	private $translator;
 
