@@ -3,6 +3,7 @@
 namespace NAttreid\Form\DI;
 
 use Kdyby\Replicator\DI\ReplicatorExtension;
+use NAttreid\Form\FormFactory;
 use Nette\DI\CompilerExtension;
 use Nette\PhpGenerator\ClassType;
 use Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
@@ -18,6 +19,13 @@ class FormExtension extends CompilerExtension
 		'BS3Macros' => false
 	];
 
+	public function loadConfiguration()
+	{
+		$builder = $this->getContainerBuilder();
+		$builder->addDefinition($this->prefix('factory'))
+			->setClass(FormFactory::class);
+	}
+
 	public function beforeCompile()
 	{
 		parent::beforeCompile();
@@ -31,7 +39,8 @@ class FormExtension extends CompilerExtension
 
 	public function afterCompile(ClassType $class)
 	{
-		(new ReplicatorExtension())->afterCompile($class);
+		$replicatorExtension = new ReplicatorExtension();
+		$replicatorExtension->afterCompile($class);
 	}
 
 }
