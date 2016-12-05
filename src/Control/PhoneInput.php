@@ -1,9 +1,9 @@
 <?php
 
-namespace NAttreid\Form\Control\PhoneInput;
+namespace NAttreid\Form\Control;
 
-use NAttreid\Form\Control\TextInput;
 use NAttreid\Form\Rules;
+use NAttreid\Utils\PhoneNumber;
 use Nette\Forms\Controls\TextBase;
 use Nette\Forms\Rule;
 use Nette\Forms\Validator;

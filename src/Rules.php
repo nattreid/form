@@ -2,7 +2,7 @@
 
 namespace NAttreid\Form;
 
-use NAttreid\Form\Control\PhoneInput\PhoneNumber;
+use NAttreid\Utils\PhoneNumber;
 use Nette\Forms\IControl;
 
 /**
