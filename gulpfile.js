@@ -7,7 +7,7 @@ var paths = {
         'js': './resources/assets/js/'
     },
     'production': {
-        'js': './assets/js'
+        'js': './assets/'
     }
 };
 
