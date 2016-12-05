@@ -8,13 +8,13 @@ use NAttreid\Form\Control\DateRange;
 use NAttreid\Form\Control\DateTimePicker;
 use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
-use NAttreid\Form\Control\PhoneInput\PhoneInput;
+use NAttreid\Form\Control\PhoneInput;
+use NAttreid\Form\Control\TextArea;
 use NAttreid\Form\Control\TextInput;
 use NAttreid\Utils\Date;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;
-use Nette\Forms\Controls\TextArea;
 use Nextras\Forms\Controls\Typeahead;
 
 /**
@@ -305,7 +305,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @param int $cols
 	 * @param int $rows
-	 * @return NTextArea
+	 * @return TextArea
 	 */
 	public function addTextEditor($name, $label = null, $cols = null, $rows = null)
 	{
