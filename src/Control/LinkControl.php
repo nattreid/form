@@ -31,7 +31,7 @@ class LinkControl extends Button
 	 * @param string $link
 	 * @return self
 	 */
-	public function link(string $link): self
+	public function link(string $link = null): self
 	{
 		$this->control->href = $link;
 		return $this;
