@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control\ImageUpload;
 
 use Nette\Forms\Controls\SubmitButton;
@@ -29,7 +31,7 @@ class Preview extends SubmitButton
 	/** @var string */
 	private $size = null;
 
-	/** @var boolean */
+	/** @var bool */
 	private $required = false;
 
 	public function __construct($button)
@@ -53,7 +55,7 @@ class Preview extends SubmitButton
 	/**
 	 * @return bool
 	 */
-	public function isOk()
+	public function isOk(): bool
 	{
 		return $this->imageName && $this->getImageClass()->isExists();
 	}
@@ -70,7 +72,7 @@ class Preview extends SubmitButton
 	 * @param string $prepend
 	 * @return self
 	 */
-	public function setPrepend($prepend)
+	public function setPrepend(string $prepend): self
 	{
 		$this->prepend = $prepend;
 		return $this;
@@ -80,7 +82,7 @@ class Preview extends SubmitButton
 	 * @param AbstractStorage $storage
 	 * @return self
 	 */
-	public function setStorage(AbstractStorage $storage)
+	public function setStorage(AbstractStorage $storage): self
 	{
 		$this->storage = $storage;
 		return $this;
@@ -90,7 +92,7 @@ class Preview extends SubmitButton
 	 * @param string $imageName
 	 * @return self
 	 */
-	public function setImageName($imageName)
+	public function setImageName(string $imageName): self
 	{
 		$this->imageName = $imageName;
 		return $this;
@@ -101,7 +103,7 @@ class Preview extends SubmitButton
 	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview($size = '200x100')
+	public function setPreview(string $size = '200x100'): self
 	{
 		$this->size = $size;
 		return $this;
@@ -145,7 +147,7 @@ class Preview extends SubmitButton
 	/**
 	 * @return PropertyAccess
 	 */
-	private function getImageClass()
+	private function getImageClass(): PropertyAccess
 	{
 		$image = $this->storage->createImage();
 		$image->setAbsoluteName($this->imageName);

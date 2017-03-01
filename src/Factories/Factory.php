@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Factories;
 
 use NAttreid\Form\Form;
@@ -26,7 +28,7 @@ abstract class Factory
 	 * @param string $name
 	 * @return Form
 	 */
-	public function create(IContainer $parent = null, $name = null)
+	public function create(IContainer $parent = null, string $name = null): Form
 	{
 		$form = new Form($parent, $name);
 

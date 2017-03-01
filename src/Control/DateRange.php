@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control;
 
+use NAttreid\Form\Traits\Date;
 use NAttreid\Utils\Range;
 use Nette\Forms\Controls\TextBase;
 use Nette\Forms\Controls\TextInput;
@@ -14,6 +17,7 @@ use Nette\Utils\DateTime;
  */
 class DateRange extends TextInput
 {
+	use Date;
 
 	/**
 	 * Format datumu
@@ -28,21 +32,14 @@ class DateRange extends TextInput
 	}
 
 	/**
-	 * Nastavi format
-	 * @param string $format
-	 */
-	public function setFormat($format)
-	{
-		$this->format = $format;
-	}
-
-	/**
 	 * Nastavi oddelovac datumu
 	 * @param string $delimiter
+	 * @return DateRange
 	 */
-	public function setDelimiter($delimiter)
+	public function setDelimiter(string $delimiter): self
 	{
 		$this->delimiter = $delimiter;
+		return $this;
 	}
 
 	/**

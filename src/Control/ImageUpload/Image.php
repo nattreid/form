@@ -1,6 +1,9 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control\ImageUpload;
+
 use Nette\Forms\Controls\HiddenField;
 
 /**
@@ -28,7 +31,7 @@ class Image extends HiddenField
 	 * @param string $prepend
 	 * @return self
 	 */
-	public function setPrepend($prepend)
+	public function setPrepend($prepend): self
 	{
 		$this->prepend = $prepend;
 		return $this;

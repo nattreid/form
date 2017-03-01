@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control\ImageUpload;
 
 use NAttreid\Form\Form;
@@ -29,7 +31,7 @@ class ImageUploadControl extends UploadControl
 	/** @var string */
 	private $namespace;
 
-	/** @var boolean */
+	/** @var bool */
 	private $isValidated = false;
 
 	/**
@@ -37,7 +39,7 @@ class ImageUploadControl extends UploadControl
 	 * @param string $button
 	 * @param int $maxImageSize
 	 */
-	public function __construct($label = null, $button = null, $maxImageSize = 15)
+	public function __construct(string $label = null, string $button = null, int $maxImageSize = 15)
 	{
 		$this->preview = new Preview($button);
 		$this->image = new Image;
@@ -122,7 +124,7 @@ class ImageUploadControl extends UploadControl
 	 * @param string|null $namespace
 	 * @return self
 	 */
-	public function setNamespace($namespace)
+	public function setNamespace($namespace): self
 	{
 		$this->namespace = $namespace;
 		return $this;
@@ -133,7 +135,7 @@ class ImageUploadControl extends UploadControl
 	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview($size)
+	public function setPreview(string $size): self
 	{
 		$this->preview->setPreview($size);
 		return $this;

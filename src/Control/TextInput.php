@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control;
 
 use NAttreid\Form\Traits\Input;
@@ -13,10 +15,10 @@ class TextInput extends \Nette\Forms\Controls\TextInput
 
 	/**
 	 * Vypne naseptavani prohlizece
-	 * @param boolean $disable
+	 * @param bool $disable
 	 * @return self
 	 */
-	public function disableAutocomplete($disable = true)
+	public function disableAutocomplete(bool $disable = true): self
 	{
 		$this->setAttribute('autocomplete', $disable ? 'off' : 'on');
 		return $this;

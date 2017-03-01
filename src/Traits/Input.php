@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Traits;
 
 /**
@@ -14,7 +16,7 @@ trait Input
 	 * @param string $value
 	 * @return self
 	 */
-	public function setPlaceholder($value)
+	public function setPlaceholder(string $value): self
 	{
 		$this->setAttribute('placeholder', $value);
 		return $this;

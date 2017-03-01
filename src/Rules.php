@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form;
 
 use NAttreid\Utils\PhoneNumber;
@@ -18,9 +20,9 @@ class Rules
 	/**
 	 * Validace telefoniho cisla
 	 * @param IControl $control
-	 * @return boolean
+	 * @return bool
 	 */
-	public static function validatePhone(IControl $control)
+	public static function validatePhone(IControl $control): bool
 	{
 		return PhoneNumber::validatePhone($control->getValue());
 	}

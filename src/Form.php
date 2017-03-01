@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form;
 
 use Kdyby\Replicator\Container;
@@ -28,7 +30,7 @@ class Form extends \Nette\Application\UI\Form
 
 	/**
 	 * Vypnuti live JS validace formulare
-	 * @var boolean
+	 * @var bool
 	 */
 	private $noLiveJsValidate = false;
 
@@ -37,7 +39,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $class
 	 * @return static
 	 */
-	public function addClass($class)
+	public function addClass(string $class)
 	{
 		$this->getElementPrototype()->class[] = $class;
 		return $this;

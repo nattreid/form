@@ -1,7 +1,10 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control;
 
+use NAttreid\Form\Traits\Date;
 use NAttreid\Form\Traits\Input;
 
 /**
@@ -11,16 +14,8 @@ use NAttreid\Form\Traits\Input;
  */
 class DatePicker extends \Nextras\Forms\Controls\DatePicker
 {
-	use Input;
-
-	/**
-	 * Nastavi formatovani data
-	 * @param string $format
-	 */
-	public function setFormat($format)
-	{
-		$this->htmlFormat = $format;
-	}
+	use Input,
+		Date;
 
 	/**
 	 * {@inheritdoc }

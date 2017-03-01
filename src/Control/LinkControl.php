@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\Control;
 
 use Nette\Forms\Controls\Button;
@@ -29,7 +31,7 @@ class LinkControl extends Button
 	 * @param string $link
 	 * @return self
 	 */
-	public function link($link)
+	public function link(string $link): self
 	{
 		$this->control->href = $link;
 		return $this;
@@ -39,7 +41,7 @@ class LinkControl extends Button
 	 * Nastavi link jako ajax
 	 * @return self
 	 */
-	public function setAjaxRequest()
+	public function setAjaxRequest(): self
 	{
 		$this->addClass('ajax');
 		return $this;
@@ -50,7 +52,7 @@ class LinkControl extends Button
 	 * @param string $class
 	 * @return self
 	 */
-	public function addClass($class)
+	public function addClass(string $class): self
 	{
 		$this->getControlPrototype()->addClass($class);
 		return $this;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types = 1);
+
 namespace NAttreid\Form\DI;
 
 use Kdyby\Replicator\DI\ReplicatorExtension;
