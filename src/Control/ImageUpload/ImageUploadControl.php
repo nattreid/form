@@ -165,7 +165,9 @@ class ImageUploadControl extends UploadControl
 	 */
 	public function getControl()
 	{
-		$this->preview->setImageName($this->value);
+		if ($this->value !== null) {
+			$this->preview->setImageName($this->value);
+		}
 		$this->image->value = $this->value;
 
 		return $this->preview->getControl() . parent::getControl() . $this->image->getControl();
