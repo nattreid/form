@@ -24,6 +24,6 @@ class Rules
 	 */
 	public static function validatePhone(IControl $control): bool
 	{
-		return PhoneNumber::validatePhone($control->getValue());
+		return PhoneNumber::validatePhone((string)$control->getValue());
 	}
 }
