@@ -4,7 +4,6 @@ declare(strict_types = 1);
 
 namespace NAttreid\Form\Control;
 
-use NAttreid\Form\Traits\Date;
 use NAttreid\Utils\Range;
 use Nette\Forms\Controls\TextBase;
 use Nette\Forms\Controls\TextInput;
@@ -17,8 +16,6 @@ use Nette\Utils\DateTime;
  */
 class DateRange extends TextInput
 {
-	use Date;
-
 	/**
 	 * Format datumu
 	 * @var string
@@ -29,6 +26,15 @@ class DateRange extends TextInput
 	public function __construct($label = null)
 	{
 		parent::__construct($label, null);
+	}
+
+	/**
+	 * Nastavi format
+	 * @param string $format
+	 */
+	public function setFormat($format)
+	{
+		$this->format = $format;
 	}
 
 	/**
