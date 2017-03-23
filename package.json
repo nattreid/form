@@ -1,13 +1,13 @@
 {
-  "name": "form",
+  "name": "nattreid-form",
   "description": "Form extension for Nette Framework",
   "main": "gulpfile.js",
   "repository": {
     "type": "git",
-    "url": "git@git.newtravel.cz:nattreid/form.git"
+    "url": "git@github.com:nattreid/form.git"
   },
   "author": "Attreid",
-  "license": "Unlicense",
+  "license": "MIT",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-uglify": "^2.0.0",

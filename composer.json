@@ -3,7 +3,7 @@
   "description": "Form extension for Nette Framework",
   "type": "library",
   "license": [
-    "Unlicense"
+    "MIT"
   ],
   "authors": [
     {
@@ -11,16 +11,10 @@
       "email": "attreid@gmail.com"
     }
   ],
-  "repositories": [
-    {
-      "type": "composer",
-      "url": "https://packages.newtravel.cz"
-    }
-  ],
   "require": {
     "php": ">= 7.0",
     "nattreid/utils": "~1.0",
-    "nattreid/forms-replicator": "~1.4",
+    "attreid/forms-replicator": "~1.4",
     "nette/forms": "~2.4",
     "nette/di": "~2.4",
     "nette/application": "~2.4",

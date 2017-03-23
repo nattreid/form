@@ -1,4 +1,4 @@
-# Rozšířený formulář pro Nette Framework
+# Rozšíření pro formulář Nette Framework
 Podpora překladů
 
 Nastavení v **config.neon**

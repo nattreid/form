@@ -1,7 +1,7 @@
 {
-    "name": "form",
+    "name": "nattreid-form",
     "description": "Form extension for Nette Framework",
-    "license": ["Unlicense"],
+    "license": ["MIT"],
     "authors": [
         {
             "name": "Attreid",
