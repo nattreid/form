@@ -1,24 +1,27 @@
 {
-    "name": "nattreid-form",
-    "description": "Form extension for Nette Framework",
-    "license": ["MIT"],
-    "authors": [
-        {
-            "name": "Attreid",
-            "email": "attreid@gmail.com"
-        }
-    ],
-    "main": [
-        "./assets/form.js"
-    ],
-    "ignore": [
-        "/src",
-        "/composer.json"
-    ],
-    "dependencies": {
-        "jquery": "~1.12",
-        "moment": "~2.13",
-        "bootstrap-daterangepicker": "~2.0",
-        "nette-forms": "~2.4"
+  "name": "nattreid-form",
+  "description": "Form extension for Nette Framework",
+  "license": [
+    "MIT"
+  ],
+  "authors": [
+    {
+      "name": "Attreid",
+      "email": "attreid@gmail.com"
     }
+  ],
+  "main": [
+    "./assets/form.js"
+  ],
+  "ignore": [
+    "/src",
+    "/composer.json"
+  ],
+  "dependencies": {
+    "jquery": "~1.12",
+    "moment": "~2.13",
+    "typeahead.js": "~0.11",
+    "bootstrap-daterangepicker": "~2.0",
+    "nette-forms": "~2.4"
+  }
 }

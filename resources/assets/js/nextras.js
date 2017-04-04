@@ -4,6 +4,11 @@
         return;
     }
 
+    if ($.fn.typeahead === undefined) {
+        console.error('Plugin "typeahead.js" required by "nextras.js" is missing!');
+        return;
+    }
+
     // nextras form
     Nette.getValuePrototype = Nette.getValue;
     Nette.getValue = function (elem) {
