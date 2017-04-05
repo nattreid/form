@@ -29,11 +29,21 @@
 
     // typehead
     $('.typeahead').each(function () {
-        $(this).typeahead({
+        var source = new Bloodhound({
+            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+            queryTokenizer: Bloodhound.tokenizers.whitespace,
             remote: {
-                url: $(this).attr('data-typeahead-url'),
+                url: $(this).data('typeahead-url'),
                 wildcard: '__QUERY_PLACEHOLDER__'
             }
+        });
+
+        $(this).typeahead({
+            hint: true,
+            highlight: true,
+            minLength: 1
+        }, {
+            source: source
         });
     });
 

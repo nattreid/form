@@ -11,7 +11,8 @@
     }
   ],
   "main": [
-    "./assets/form.js"
+    "./assets/form.js",
+    "./assets/form.css"
   ],
   "ignore": [
     "/src",
