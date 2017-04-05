@@ -19,10 +19,10 @@
     "/composer.json"
   ],
   "dependencies": {
-    "jquery": "~1.12",
-    "moment": "~2.13",
-    "typeahead.js": "~0.11",
-    "bootstrap-daterangepicker": "~2.0",
-    "nette-forms": "~2.4"
+    "jquery": "~3",
+    "moment": "~2",
+    "typeahead.js": "latest",
+    "bootstrap-daterangepicker": "~2",
+    "nette-forms": "~2"
   }
 }
