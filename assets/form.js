@@ -160,11 +160,6 @@
         return;
     }
 
-    if ($.fn.typeahead === undefined) {
-        console.error('Plugin "typeahead.js" required by "nextras.js" is missing!');
-        return;
-    }
-
     // nextras form
     Nette.getValuePrototype = Nette.getValue;
     Nette.getValue = function (elem) {
@@ -182,6 +177,25 @@
             return value.length == 0 ? null : value;
         }
     };
+
+})(jQuery, window, Nette);
+Nette.validators.NAttreidFormRules_validatePhone = function (elem, arg, value) {
+    if (!elem.hasAttribute('required') && value.length === 0) {
+        return true;
+    }
+    var regexp = /^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/;
+    return regexp.test(value.replace(/[-\.\s]+/g, ''));
+};
+(function ($, window) {
+    if (window.jQuery === undefined) {
+        console.error('Plugin "jQuery" required by "typeahead.js" is missing!');
+        return;
+    }
+
+    if ($.fn.typeahead === undefined) {
+        console.error('Plugin "typeahead.js" required by "typeahead.js" is missing!');
+        return;
+    }
 
     // typehead
     $('.typeahead').each(function () {
@@ -203,11 +217,4 @@
         });
     });
 
-})(jQuery, window, Nette);
-Nette.validators.NAttreidFormRules_validatePhone = function (elem, arg, value) {
-    if (!elem.hasAttribute('required') && value.length === 0) {
-        return true;
-    }
-    var regexp = /^(\(?\+?([0-9]{1,4})\)?)?([0-9]{6,16})$/;
-    return regexp.test(value.replace(/[-\.\s]+/g, ''));
-};
+})(jQuery, window);
