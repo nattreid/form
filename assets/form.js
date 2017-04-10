@@ -197,24 +197,30 @@ Nette.validators.NAttreidFormRules_validatePhone = function (elem, arg, value) {
         return;
     }
 
-    // typehead
-    $('.typeahead').each(function () {
-        var source = new Bloodhound({
-            datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
-            queryTokenizer: Bloodhound.tokenizers.whitespace,
-            remote: {
-                url: $(this).data('typeahead-url'),
-                wildcard: '__QUERY_PLACEHOLDER__'
+    function typeahead() {
+        $('.typeahead').each(function () {
+            if (!$(this).parent().hasClass('twitter-typeahead')) {
+                var source = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('value'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: $(this).data('typeahead-url'),
+                        wildcard: '__QUERY_PLACEHOLDER__'
+                    }
+                });
+
+                $(this).typeahead({
+                    hint: true,
+                    highlight: true,
+                    minLength: 1
+                }, {
+                    source: source
+                });
             }
         });
+    }
 
-        $(this).typeahead({
-            hint: true,
-            highlight: true,
-            minLength: 1
-        }, {
-            source: source
-        });
-    });
+    $(document).ready(typeahead);
+    $(document).ajaxComplete(typeahead);
 
 })(jQuery, window);
