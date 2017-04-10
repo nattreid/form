@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Form;
 
@@ -22,7 +22,7 @@ use Nextras\Forms\Controls\Typeahead;
 /**
  * {@inheritdoc }
  *
- * @method Container addDynamic($name, callable $callable, $createDefault = 0, $forceDefault= false) Callable function(\Nette\Forms\Container $item){
+ * @method Container addDynamic($name, callable $callable, $createDefault = 0, $forceDefault = false) Callable function(\Nette\Forms\Container $item){
  * }
  */
 class Form extends \Nette\Application\UI\Form

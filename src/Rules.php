@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types = 1);
+declare(strict_types=1);
 
 namespace NAttreid\Form;
 
@@ -24,6 +24,6 @@ class Rules
 	 */
 	public static function validatePhone(IControl $control): bool
 	{
-		return PhoneNumber::validatePhone((string)$control->getValue());
+		return PhoneNumber::validatePhone((string) $control->getValue());
 	}
 }
