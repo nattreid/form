@@ -209,13 +209,19 @@ Nette.validators.NAttreidFormRules_validatePhone = function (elem, arg, value) {
                     }
                 });
 
-                $(this).typeahead({
+                var options = {
                     hint: true,
                     highlight: true,
                     minLength: 1
-                }, {
+                };
+                var dataset = {
                     source: source
-                });
+                };
+                if ($(this).data('limit') !== undefined) {
+                    dataset.limit = $(this).data('limit');
+                }
+
+                $(this).typeahead(options, dataset);
             }
         });
     }

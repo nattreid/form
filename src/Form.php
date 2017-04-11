@@ -13,11 +13,11 @@ use NAttreid\Form\Control\LinkControl;
 use NAttreid\Form\Control\PhoneInput;
 use NAttreid\Form\Control\TextArea;
 use NAttreid\Form\Control\TextInput;
+use NAttreid\Form\Control\Typeahead;
 use NAttreid\Utils\Date;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;
-use Nextras\Forms\Controls\Typeahead;
 
 /**
  * {@inheritdoc }
@@ -134,7 +134,7 @@ class Form extends \Nette\Application\UI\Form
 	 * {@inheritdoc }
 	 * @return TextInput
 	 */
-	public function addPassword($name, $label = NULL, $cols = NULL, $maxLength = NULL)
+	public function addPassword($name, $label = null, $cols = null, $maxLength = null)
 	{
 		return $this[$name] = (new TextInput($label, $maxLength))
 			->setType('password')
@@ -296,7 +296,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param int $maxImageSize
 	 * @return ImageUploadControl
 	 */
-	public function addImageUpload($name, $label = null, $button = null, $maxImageSize = 15)
+	public function addImageUpload($name, $label = null, $button = null, int $maxImageSize = 15)
 	{
 		return $this[$name] = new ImageUploadControl($label, $button, $maxImageSize);
 	}
@@ -307,7 +307,7 @@ class Form extends \Nette\Application\UI\Form
 	 * @param string $label
 	 * @param int $cols
 	 * @param int $rows
-	 * @return TextArea
+	 * @return \Nette\Forms\Controls\TextArea
 	 */
 	public function addTextEditor($name, $label = null, $cols = null, $rows = null)
 	{
