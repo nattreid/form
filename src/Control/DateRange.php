@@ -31,10 +31,12 @@ class DateRange extends TextInput
 	/**
 	 * Nastavi format
 	 * @param string $format
+	 * @return self
 	 */
 	public function setFormat($format)
 	{
 		$this->format = $format;
+		return $this;
 	}
 
 	/**
