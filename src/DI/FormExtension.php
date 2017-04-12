@@ -5,9 +5,21 @@ declare(strict_types=1);
 namespace NAttreid\Form\DI;
 
 use Kdyby\Replicator\DI\ReplicatorExtension;
+use NAttreid\Form\Control\DatePicker;
+use NAttreid\Form\Control\DateRange;
+use NAttreid\Form\Control\DateTimePicker;
+use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
+use NAttreid\Form\Control\LinkControl;
+use NAttreid\Form\Control\PhoneInput;
+use NAttreid\Form\Control\Typeahead;
 use NAttreid\Form\Factories\FormFactory;
+use NAttreid\Utils\Date;
 use Nette\DI\CompilerExtension;
+use Nette\Forms\Container;
+use Nette\Forms\Controls\TextArea;
+use Nette\Forms\Controls\TextInput;
 use Nette\PhpGenerator\ClassType;
+use Nette\Utils\ObjectMixin;
 use Nextras\Forms\Bridges\Latte\Macros\BS3InputMacros;
 
 /**
@@ -41,8 +53,112 @@ class FormExtension extends CompilerExtension
 
 	public function afterCompile(ClassType $class)
 	{
+		$init = $class->getMethods()['initialize'];
+		$init->addBody(__CLASS__ . '::registerControls();');
 		$replicatorExtension = new ReplicatorExtension();
 		$replicatorExtension->afterCompile($class);
 	}
 
+	public static function registerControls()
+	{
+		ObjectMixin::setExtensionMethod(TextInput::class, 'disableAutocomplete', function (TextInput $control, bool $disable = true) {
+			$control->setAttribute('autocomplete', $disable ? 'off' : 'on');
+			return $control;
+		});
+
+		ObjectMixin::setExtensionMethod(TextInput::class, 'setPlaceholder', function (TextInput $control, string $value) {
+			$control->setAttribute('placeholder', $value);
+			return $control;
+		});
+
+		ObjectMixin::setExtensionMethod(TextArea::class, 'setPlaceholder', function (TextArea $control, string $value) {
+			$control->setAttribute('placeholder', $value);
+			return $control;
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addLink', function (Container $container, string $name, string $caption, string $link = null) {
+			return $container[$name] = new LinkControl($caption, $link);
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addSelectUntranslated', function (Container $container, string $name, string $label = null, array $items = null, string $prompt = null) {
+			$translator = $container->form ? $container->form->getTranslator() : null;
+			if ($translator != null && $label !== null) {
+				$label = $translator->translate($label);
+			}
+			$element = $container->addSelect($name, $label, $items);
+			if ($prompt !== null) {
+				if ($translator != null) {
+					$prompt = $translator->translate($prompt);
+				}
+				$element->setPrompt($prompt);
+			}
+			$element->setTranslator();
+			return $element;
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addMultiSelectUntranslated', function (Container $container, string $name, string $label = null, array $items = null, string $prompt = null) {
+			$translator = $container->form ? $container->form->getTranslator() : null;
+			if ($translator != null && $label !== null) {
+				$label = $translator->translate($label);
+			}
+			if ($prompt !== null) {
+				if ($translator != null) {
+					$prompt = $translator->translate($prompt);
+				}
+				$items = ['' => $prompt] + $items;
+			}
+			$element = $container->addMultiSelect($name, $label, $items);
+
+			$element->setTranslator();
+			return $element;
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addCheckboxListUntranslated', function (Container $container, string $name, string $label = null, array $items = null) {
+			$translator = $container->form ? $container->form->getTranslator() : null;
+			if ($translator != null && $label !== null) {
+				$label = $translator->translate($label);
+			}
+			$element = $container->addCheckboxList($name, $label, $items);
+			$element->setTranslator();
+			return $element;
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addCheckboxUntranslated', function (Container $container, string $name, string $caption = null) {
+			$element = $container->addCheckbox($name, $caption);
+			$element->setTranslator();
+			return $element;
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addDate', function (Container $container, string $name, string $label = null) {
+			return $container[$name] = (new DatePicker($label))
+				->setFormat(Date::getFormat(Date::DATE));
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addDateTime', function (Container $container, string $name, string $label = null) {
+			return $container[$name] = (new DateTimePicker($label))
+				->setFormat(Date::getFormat(Date::DATETIME));
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addDateRange', function (Container $container, string $name, string $label = null) {
+			return $container[$name] = (new DateRange($label))
+				->setFormat(Date::getFormat(Date::DATE));
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addTypeahead', function (Container $container, string $name, string $label = null, callable $callback = null) {
+			return $container[$name] = new Typeahead($label, $callback);
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addImageUpload', function (Container $container, string $name, string $label = null, string $button = null, int $maxImageSize = 15) {
+			return $container[$name] = new ImageUploadControl($label, $button, $maxImageSize);
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addTextEditor', function (Container $container, string $name, string $label = null, int $cols = null, int $rows = null) {
+			return $container->addTextArea($name, $label, $cols, $rows)
+				->setAttribute('class', 'ckeditor');
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addPhone', function (Container $container, string $name, string $label = null) {
+			return $container[$name] = new PhoneInput($label);
+		});
+	}
 }

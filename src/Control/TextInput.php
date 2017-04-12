@@ -4,24 +4,14 @@ declare(strict_types=1);
 
 namespace NAttreid\Form\Control;
 
-use NAttreid\Form\Traits\Input;
-
 /**
  * {@inheritdoc }
+ *
+ * @method static disableAutocomplete(bool $disable = true)
+ * @method static setPlaceholder(string $value)
+ *
+ * @author Attreid <attreid@gmail.com>
  */
 class TextInput extends \Nette\Forms\Controls\TextInput
 {
-	use Input;
-
-	/**
-	 * Vypne naseptavani prohlizece
-	 * @param bool $disable
-	 * @return self
-	 */
-	public function disableAutocomplete(bool $disable = true): self
-	{
-		$this->setAttribute('autocomplete', $disable ? 'off' : 'on');
-		return $this;
-	}
-
 }
