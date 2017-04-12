@@ -21,7 +21,7 @@
   "dependencies": {
     "jquery": "~3",
     "moment": "~2",
-    "typeahead.js": "latest",
+    "corejs-typeahead": "~1",
     "bootstrap-daterangepicker": "~2",
     "nette-forms": "~2"
   }
