@@ -34,7 +34,11 @@ class Preview extends SubmitButton
 	/** @var bool */
 	private $required = false;
 
-	public function __construct($button)
+	/**
+	 * Preview constructor.
+	 * @param string|object $button
+	 */
+	public function __construct($button = null)
 	{
 		if ($button == null) {
 			$button = 'Delete';
@@ -45,7 +49,7 @@ class Preview extends SubmitButton
 	/**
 	 * {@inheritdoc }
 	 */
-	protected function attached($form)
+	protected function attached($form): void
 	{
 		parent::attached($form);
 		$this->setAttribute('class', 'btn btn-danger');
@@ -63,7 +67,7 @@ class Preview extends SubmitButton
 	/**
 	 * @return string
 	 */
-	public function getHtmlName()
+	public function getHtmlName(): string
 	{
 		return $this->prepend . self::NAME;
 	}
@@ -112,7 +116,7 @@ class Preview extends SubmitButton
 	/**
 	 * {@inheritdoc }
 	 */
-	public function setRequired($value = true)
+	public function setRequired($value = true): self
 	{
 		$this->required = $value;
 		return $this;
@@ -121,7 +125,7 @@ class Preview extends SubmitButton
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getControl($caption = null)
+	public function getControl($caption = null): ?Html
 	{
 		$button = parent::getControl($caption);
 		if ($this->isOk()) {

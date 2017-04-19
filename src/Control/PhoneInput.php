@@ -20,6 +20,10 @@ class PhoneInput extends TextInput
 	/** @var string */
 	private $prefix;
 
+	/**
+	 * PhoneInput constructor.
+	 * @param string|object $label
+	 */
 	public function __construct($label)
 	{
 		parent::__construct($label, 20);
@@ -28,26 +32,28 @@ class PhoneInput extends TextInput
 		$this->addRule(Rules::PHONE);
 	}
 
-	public function addRule($validator, $message = NULL, $arg = NULL)
+	public function addRule($validator, $message = null, $arg = null): self
 	{
-		return TextBase::addRule($validator, $message, $arg);
+		TextBase::addRule($validator, $message, $arg);
+		return $this;
 	}
 
-	public function setPrefix($prefix)
+	public function setPrefix(string $prefix): self
 	{
 		$this->prefix = $prefix;
+		return $this;
 	}
 
 	/**
 	 * @return PhoneNumber
 	 */
-	public function getValue()
+	public function getValue(): ?PhoneNumber
 	{
 		$value = parent::getValue();
 		return empty($value) ? null : new PhoneNumber($value, $this->prefix);
 	}
 
-	public function validate()
+	public function validate(): void
 	{
 		parent::validate();
 		$value = $this->getValue();

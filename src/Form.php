@@ -27,7 +27,7 @@ class Form extends \Nette\Application\UI\Form implements IContainer
 	 * @param string $class
 	 * @return static
 	 */
-	public function addClass(string $class)
+	public function addClass(string $class): self
 	{
 		$this->getElementPrototype()->class[] = $class;
 		return $this;
@@ -37,7 +37,7 @@ class Form extends \Nette\Application\UI\Form implements IContainer
 	 * Nastavi formular jako AJAX
 	 * @return static
 	 */
-	public function setAjaxRequest()
+	public function setAjaxRequest(): self
 	{
 		$this->addClass('ajax');
 		return $this;
@@ -47,7 +47,7 @@ class Form extends \Nette\Application\UI\Form implements IContainer
 	 * Vypne live validaci v JS
 	 * @return static
 	 */
-	public function noLiveJsValidate()
+	public function noLiveJsValidate(): self
 	{
 		$this->noLiveJsValidate = true;
 		return $this;
@@ -57,7 +57,7 @@ class Form extends \Nette\Application\UI\Form implements IContainer
 	 * Vypne validaci v JS
 	 * @return static
 	 */
-	public function noJsValidate()
+	public function noJsValidate(): self
 	{
 		$this->addClass('no-validate');
 		return $this;
@@ -82,17 +82,5 @@ class Form extends \Nette\Application\UI\Form implements IContainer
 			}
 		}
 		parent::render($args);
-	}
-
-	/**
-	 * {@inheritdoc }
-	 */
-	public function addError($message)
-	{
-		$translator = $this->getTranslator();
-		if ($translator !== null) {
-			$message = $translator->translate($message);
-		}
-		parent::addError($message);
 	}
 }

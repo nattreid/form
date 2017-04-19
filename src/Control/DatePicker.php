@@ -6,6 +6,7 @@ namespace NAttreid\Form\Control;
 
 use NAttreid\Form\Traits\Date;
 use NAttreid\Form\Traits\Input;
+use Nette\Utils\Html;
 
 /**
  * Datum
@@ -20,7 +21,7 @@ class DatePicker extends \Nextras\Forms\Controls\DatePicker
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		$this->htmlType = 'text';
 		$control = parent::getControl();

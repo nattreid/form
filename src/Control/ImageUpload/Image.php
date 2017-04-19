@@ -22,7 +22,7 @@ class Image extends HiddenField
 	/**
 	 * @return string
 	 */
-	public function getHtmlName()
+	public function getHtmlName(): string
 	{
 		return $this->prepend . self::NAME;
 	}

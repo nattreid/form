@@ -33,14 +33,14 @@ class FormExtension extends CompilerExtension
 		'BS3Macros' => false
 	];
 
-	public function loadConfiguration()
+	public function loadConfiguration(): void
 	{
 		$builder = $this->getContainerBuilder();
 		$builder->addDefinition($this->prefix('factory'))
 			->setClass(FormFactory::class);
 	}
 
-	public function beforeCompile()
+	public function beforeCompile(): void
 	{
 		parent::beforeCompile();
 		$builder = $this->getContainerBuilder();
@@ -51,7 +51,7 @@ class FormExtension extends CompilerExtension
 		}
 	}
 
-	public function afterCompile(ClassType $class)
+	public function afterCompile(ClassType $class): void
 	{
 		$init = $class->getMethods()['initialize'];
 		$init->addBody(__CLASS__ . '::registerControls();');
@@ -59,7 +59,7 @@ class FormExtension extends CompilerExtension
 		$replicatorExtension->afterCompile($class);
 	}
 
-	public static function registerControls()
+	public static function registerControls(): void
 	{
 		ObjectMixin::setExtensionMethod(TextInput::class, 'disableAutocomplete', function (TextInput $control, bool $disable = true) {
 			$control->setAttribute('autocomplete', $disable ? 'off' : 'on');

@@ -9,6 +9,7 @@ use Nette\Application\IPresenter;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\UploadControl;
 use Nette\Http\FileUpload;
+use Nette\Utils\Html;
 use WebChemistry\Images\AbstractStorage;
 
 /**
@@ -28,18 +29,18 @@ class ImageUploadControl extends UploadControl
 	/** @var AbstractStorage */
 	private $storage;
 
-	/** @var string */
+	/** @var ?string */
 	private $namespace;
 
 	/** @var bool */
 	private $isValidated = false;
 
 	/**
-	 * @param string $label
-	 * @param string $button
+	 * @param string|object $label
+	 * @param string|object $button
 	 * @param int $maxImageSize
 	 */
-	public function __construct(string $label = null, string $button = null, int $maxImageSize = 15)
+	public function __construct($label = null, $button = null, int $maxImageSize = 15)
 	{
 		$this->preview = new Preview($button);
 		$this->image = new Image;
@@ -57,7 +58,7 @@ class ImageUploadControl extends UploadControl
 	/**
 	 * {@inheritdoc }
 	 */
-	protected function attached($form)
+	protected function attached($form): void
 	{
 		parent::attached($form);
 
@@ -89,7 +90,7 @@ class ImageUploadControl extends UploadControl
 	/**
 	 * Ulozeni
 	 */
-	public function onValidate()
+	public function onValidate(): void
 	{
 		if ($this->value instanceof FileUpload && $this->value->isOk()) {
 			$this->storage->delete($this->image->value);
@@ -104,7 +105,7 @@ class ImageUploadControl extends UploadControl
 	/**
 	 * {@inheritdoc }
 	 */
-	public function loadHttpData()
+	public function loadHttpData(): void
 	{
 		parent::loadHttpData();
 
@@ -124,7 +125,7 @@ class ImageUploadControl extends UploadControl
 	 * @param string|null $namespace
 	 * @return self
 	 */
-	public function setNamespace($namespace): self
+	public function setNamespace(?string $namespace = null): self
 	{
 		$this->namespace = $namespace;
 		return $this;
@@ -144,16 +145,17 @@ class ImageUploadControl extends UploadControl
 	/**
 	 * {@inheritdoc }
 	 */
-	public function setRequired($value = true)
+	public function setRequired($value = true): self
 	{
 		$this->preview->setRequired($value);
-		return parent::setRequired($value);
+		parent::setRequired($value);
+		return $this;
 	}
 
 	/**
 	 * {@inheritdoc }
 	 */
-	public function validate()
+	public function validate(): void
 	{
 		if (!$this->isValidated) {
 			parent::validate();
@@ -163,20 +165,28 @@ class ImageUploadControl extends UploadControl
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		if ($this->value !== null) {
 			$this->preview->setImageName($this->value);
 		}
 		$this->image->value = $this->value;
 
-		return $this->preview->getControl() . parent::getControl() . $this->image->getControl();
+		$control = Html::el('div');
+		if (($preview = $this->preview->getControl()) !== null) {
+			$control->addHtml($preview);
+		}
+
+		$control->addHtml(parent::getControl())
+			->addHtml($this->image->getControl());
+
+		return $control;
 	}
 
 	/**
 	 * {@inheritdoc }
 	 */
-	public function setValue($value)
+	public function setValue($value): void
 	{
 		BaseControl::setValue($value);
 	}

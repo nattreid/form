@@ -16,10 +16,10 @@ class LinkControl extends Button
 {
 
 	/**
-	 * @param string $caption text odkazu
+	 * @param string|object $caption text odkazu
 	 * @param string $link link odkazu
 	 */
-	public function __construct($caption, $link = null)
+	public function __construct($caption, ?string $link = null)
 	{
 		parent::__construct($caption);
 		$this->control = Html::el('a');
@@ -31,7 +31,7 @@ class LinkControl extends Button
 	 * @param string $link
 	 * @return self
 	 */
-	public function link(string $link = null): self
+	public function link(?string $link = null): self
 	{
 		$this->control->href = $link;
 		return $this;
@@ -64,14 +64,14 @@ class LinkControl extends Button
 	public function getControl($caption = null)
 	{
 		$control = parent::getControl();
-		$control->setText($this->translate($this->caption));
+		$control->setText($this->translate($caption ?? $this->caption));
 		return $control;
 	}
 
 	/**
 	 * {@inheritdoc }
 	 */
-	public function isOmitted()
+	public function isOmitted(): bool
 	{
 		return true;
 	}

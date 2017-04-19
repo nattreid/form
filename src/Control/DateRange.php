@@ -8,6 +8,7 @@ use NAttreid\Utils\Range;
 use Nette\Forms\Controls\TextBase;
 use Nette\Forms\Controls\TextInput;
 use Nette\Utils\DateTime;
+use Nette\Utils\Html;
 
 /**
  * Interval datumu
@@ -33,7 +34,7 @@ class DateRange extends TextInput
 	 * @param string $format
 	 * @return self
 	 */
-	public function setFormat($format)
+	public function setFormat(string $format): self
 	{
 		$this->format = $format;
 		return $this;
@@ -54,7 +55,7 @@ class DateRange extends TextInput
 	 * Vrati pole intervalu datumu
 	 * @return Range|null
 	 */
-	public function getValue()
+	public function getValue(): ?Range
 	{
 		if (!empty($this->value)) {
 			$result = new Range;
@@ -80,15 +81,15 @@ class DateRange extends TextInput
 			$str = $value->from->format($this->format) . $this->delimiter . $value->to->format($this->format);
 			return parent::setValue($str);
 		} else {
-			return parent::setValue($value);
+			return parent::setValue((string) $value);
 		}
 	}
 
 	/**
 	 * Nastavi kontrol
-	 * @return \Nette\Utils\Html
+	 * @return Html
 	 */
-	public function getControl()
+	public function getControl(): Html
 	{
 		$control = parent::getControl();
 
