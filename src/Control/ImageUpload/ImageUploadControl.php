@@ -93,7 +93,9 @@ class ImageUploadControl extends UploadControl
 	public function onValidate(): void
 	{
 		if ($this->value instanceof FileUpload && $this->value->isOk()) {
-			$this->storage->delete($this->image->value);
+			if ($this->image->value) {
+				$this->storage->delete($this->image->value);
+			}
 			$value = $this->storage->saveUpload($this->value, $this->namespace);
 		} else {
 			$value = $this->image->value;
