@@ -150,7 +150,6 @@ class ImageUploadControl extends UploadControl
 	public function setRequired($value = true): self
 	{
 		$this->preview->setRequired($value);
-		parent::setRequired($value);
 		return $this;
 	}
 
