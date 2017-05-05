@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace NAttreid\Form\Traits;
 
+use DateTimeImmutable;
+use Nette\Utils\DateTime;
+
 /**
  * Trait Date
  *
@@ -20,5 +23,14 @@ trait Date
 	{
 		$this->htmlFormat = $format;
 		return $this;
+	}
+
+	public function getValue()
+	{
+		if ($this->value instanceof DateTimeImmutable) {
+			return DateTime::from($this->value);
+		} else {
+			return parent::getValue();
+		}
 	}
 }
