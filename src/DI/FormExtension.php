@@ -134,9 +134,15 @@ class FormExtension extends CompilerExtension
 				->setFormat(Date::getFormat(Date::DATE));
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addDateTime', function (Container $container, string $name, string $label = null) {
-			return $container[$name] = (new DateTimePicker($label))
-				->setFormat(Date::getFormat(Date::DATETIME));
+		ObjectMixin::setExtensionMethod(Container::class, 'addDateTime', function (Container $container, string $name, string $label = null, bool $withSeconds = false) {
+			$control = new DateTimePicker($label);
+			if ($withSeconds) {
+				$control->setFormat(Date::getFormat(Date::DATETIME));
+			} else {
+				$control->setFormat(Date::getFormat(Date::DATE_WITH_TIME));
+			}
+			return $container[$name] = $control;
+
 		});
 
 		ObjectMixin::setExtensionMethod(Container::class, 'addDateRange', function (Container $container, string $name, string $label = null) {

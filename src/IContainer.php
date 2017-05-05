@@ -32,7 +32,7 @@ use Nette\Forms\Controls\SelectBox;
  * @method CheckboxList addCheckboxListUntranslated(string $name, string $label = null, array $items = null) Prida Checkbox seznam s neprelozenymi daty
  * @method Checkbox addCheckboxUntranslated(string $name, string $caption = null) Prida Checkbox s neprelozenymi daty
  * @method DatePicker addDate(string $name, string $label = null) Prida pole datum
- * @method DateTimePicker addDateTime(string $name, string $label = null) Prida pole datum a cas
+ * @method DateTimePicker addDateTime(string $name, string $label = null, bool $withSeconds = false) Prida pole datum a cas
  * @method DateRange addDateRange(string $name, string $label = null) Prida pole interval datumu
  * @method Typeahead addTypeahead(string $name, string $label = null, callable $callback = null) Autocomplete
  * @method ImageUploadControl addImageUpload(string $name, string $label = null, string $button = null, int $maxImageSize = 15) Prida upload obrazku
