@@ -39,8 +39,8 @@
                 'Minulý měsíc': ranges.lastMonth
             },
             format: {
-                date: 'DD.MM.YYYY',
-                time: 'HH:mm'
+                date: 'D.M.YYYY',
+                time: 'H:mm'
             }
         },
         en: {
@@ -61,8 +61,8 @@
                 'Last Month': ranges.lastMonth
             },
             format: {
-                date: 'MM/DD/YYYY',
-                time: 'HH:mm'
+                date: 'M/D/YYYY',
+                time: 'H:mm'
             }
         }
     };
