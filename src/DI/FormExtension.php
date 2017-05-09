@@ -80,7 +80,7 @@ class FormExtension extends CompilerExtension
 			return $container[$name] = new LinkControl($caption, $link);
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addSelectUntranslated', function (Container $container, string $name, string $label = null, array $items = null, string $prompt = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addSelectUntranslated', function (Container $container, string $name, $label = null, array $items = null, string $prompt = null) {
 			$translator = $container->form ? $container->form->getTranslator() : null;
 			if ($translator != null && $label !== null) {
 				$label = $translator->translate($label);
@@ -96,7 +96,7 @@ class FormExtension extends CompilerExtension
 			return $element;
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addMultiSelectUntranslated', function (Container $container, string $name, string $label = null, array $items = null, string $prompt = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addMultiSelectUntranslated', function (Container $container, string $name, $label = null, array $items = null, string $prompt = null) {
 			$translator = $container->form ? $container->form->getTranslator() : null;
 			if ($translator != null && $label !== null) {
 				$label = $translator->translate($label);
@@ -113,7 +113,7 @@ class FormExtension extends CompilerExtension
 			return $element;
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addCheckboxListUntranslated', function (Container $container, string $name, string $label = null, array $items = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addCheckboxListUntranslated', function (Container $container, string $name, $label = null, array $items = null) {
 			$translator = $container->form ? $container->form->getTranslator() : null;
 			if ($translator != null && $label !== null) {
 				$label = $translator->translate($label);
@@ -129,12 +129,12 @@ class FormExtension extends CompilerExtension
 			return $element;
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addDate', function (Container $container, string $name, string $label = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addDate', function (Container $container, string $name, $label = null) {
 			return $container[$name] = (new DatePicker($label))
 				->setFormat(Date::getFormat(Date::DATE));
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addDateTime', function (Container $container, string $name, string $label = null, bool $withSeconds = false) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addDateTime', function (Container $container, string $name, $label = null, bool $withSeconds = false) {
 			$control = new DateTimePicker($label);
 			if ($withSeconds) {
 				$control->setFormat(Date::getFormat(Date::DATETIME));
@@ -145,25 +145,25 @@ class FormExtension extends CompilerExtension
 
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addDateRange', function (Container $container, string $name, string $label = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addDateRange', function (Container $container, string $name, $label = null) {
 			return $container[$name] = (new DateRange($label))
 				->setFormat(Date::getFormat(Date::DATE));
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addTypeahead', function (Container $container, string $name, string $label = null, callable $callback = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addTypeahead', function (Container $container, string $name, $label = null, callable $callback = null) {
 			return $container[$name] = new Typeahead($label, $callback);
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addImageUpload', function (Container $container, string $name, string $label = null, string $button = null, int $maxImageSize = 15) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addImageUpload', function (Container $container, string $name, $label = null, string $button = null, int $maxImageSize = 15) {
 			return $container[$name] = new ImageUploadControl($label, $button, $maxImageSize);
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addTextEditor', function (Container $container, string $name, string $label = null, int $cols = null, int $rows = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addTextEditor', function (Container $container, string $name, $label = null, int $cols = null, int $rows = null) {
 			return $container->addTextArea($name, $label, $cols, $rows)
 				->setAttribute('class', 'ckeditor');
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addPhone', function (Container $container, string $name, string $label = null) {
+		ObjectMixin::setExtensionMethod(Container::class, 'addPhone', function (Container $container, string $name, $label = null) {
 			return $container[$name] = new PhoneInput($label);
 		});
 	}
