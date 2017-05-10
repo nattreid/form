@@ -19,6 +19,18 @@ class Typeahead extends \Nextras\Forms\Controls\Typeahead
 		return $this;
 	}
 
+	public function setMinLength(int $minLength): self
+	{
+		$this->setAttribute('data-min-length', $minLength);
+		return $this;
+	}
+
+	public function setSubmitOnSelect(bool $submit = true): self
+	{
+		$this->setAttribute('data-submit-on-select', $submit);
+		return $this;
+	}
+
 	public function disableAutocomplete(bool $disable = true): self
 	{
 		$this->setAttribute('autocomplete', $disable ? 'off' : 'on');

@@ -24,8 +24,9 @@
                 var options = {
                     hint: true,
                     highlight: true,
-                    minLength: 1
+                    minLength: $(this).data('min-length') ? $(this).data('min-length') : 1
                 };
+
                 var dataset = {
                     source: source
                 };
@@ -34,6 +35,13 @@
                 }
 
                 $(this).typeahead(options, dataset);
+
+                if ($(this).data('submit-on-select') !== undefined) {
+                    var form = $(this).closest('form');
+                    $(this).bind('typeahead:select', function (ev, suggestion) {
+                        form.submit();
+                    });
+                }
             }
         });
     }
