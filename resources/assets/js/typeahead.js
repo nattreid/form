@@ -33,6 +33,15 @@
                 if ($(this).data('limit') !== undefined) {
                     dataset.limit = $(this).data('limit');
                 }
+                if ($(this).data('empty-message') !== undefined) {
+                    dataset.templates = {
+                        empty: [
+                            '<div class="empty-message">',
+                            $(this).data('empty-message'),
+                            '</div>'
+                        ].join('\n')
+                    };
+                }
 
                 $(this).typeahead(options, dataset);
 

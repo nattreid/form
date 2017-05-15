@@ -31,9 +31,9 @@ class Typeahead extends \Nextras\Forms\Controls\Typeahead
 		return $this;
 	}
 
-	public function disableAutocomplete(bool $disable = true): self
+	public function setEmptyMessage(string $message): self
 	{
-		$this->setAttribute('autocomplete', $disable ? 'off' : 'on');
+		$this->setAttribute('data-empty-message', $this->translate($message));
 		return $this;
 	}
 }
