@@ -22,7 +22,7 @@
     var localize = {
         cs: {
             locale: {
-                applyLabel: 'Odeslat',
+                applyLabel: 'Vložit',
                 cancelLabel: 'Zrušit',
                 fromLabel: 'Od',
                 toLabel: 'Do',
