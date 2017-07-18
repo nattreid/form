@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NAttreid\Form\Control\ImageUpload;
 
 use Nette\Forms\Controls\SubmitButton;
+use Nette\Forms\Validator;
 use Nette\Utils\Html;
 use WebChemistry\Images\AbstractStorage;
 use WebChemistry\Images\Image\PropertyAccess;
@@ -17,7 +18,9 @@ use WebChemistry\Images\Image\PropertyAccess;
 class Preview extends SubmitButton
 {
 
-	const NAME = '_preview';
+	const
+		NAME = '_preview',
+		DELETE = ':imagePreviewDelete';
 
 	/** @var string */
 	private $imageName;
@@ -41,7 +44,7 @@ class Preview extends SubmitButton
 	public function __construct($button = null)
 	{
 		if ($button == null) {
-			$button = 'Delete';
+			$button = Validator::$messages[self::DELETE] ?? 'Delete';
 		}
 		parent::__construct($button);
 	}
