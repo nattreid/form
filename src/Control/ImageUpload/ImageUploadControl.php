@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace NAttreid\Form\Control\ImageUpload;
 
 use NAttreid\Form\Form;
+use NAttreid\Form\Rules;
+use NAttreid\ImageStorage\ImageStorage;
 use Nette\Application\IPresenter;
 use Nette\Forms\Controls\BaseControl;
 use Nette\Forms\Controls\UploadControl;
 use Nette\Http\FileUpload;
 use Nette\Utils\Html;
-use WebChemistry\Images\AbstractStorage;
 
 /**
  * Ukladani obrazku ve form
@@ -23,10 +24,10 @@ class ImageUploadControl extends UploadControl
 	/** @var Preview */
 	private $preview;
 
-	/** @var Image */
-	private $image;
+	/** @var ImageHiddenField */
+	private $imageHiddenField;
 
-	/** @var AbstractStorage */
+	/** @var ImageStorage */
 	private $storage;
 
 	/** @var ?string */
@@ -43,12 +44,12 @@ class ImageUploadControl extends UploadControl
 	public function __construct($label = null, $button = null, int $maxImageSize = 15)
 	{
 		$this->preview = new Preview($button);
-		$this->image = new Image;
+		$this->imageHiddenField = new ImageHiddenField;
 
 		parent::__construct($label);
 
 		$this->addCondition(Form::FILLED)
-			->addRule(Form::IMAGE)
+			->addRule(Rules::IMAGE)
 			->addRule(Form::MAX_FILE_SIZE, null, $maxImageSize * 1024 * 1024 /* v bytech */)
 			->endCondition();
 
@@ -64,24 +65,24 @@ class ImageUploadControl extends UploadControl
 
 		if ($form instanceof Form) {
 			$this->preview->setParent($form, $form->getName());
-			$this->image->setParent($form, $form->getName());
+			$this->imageHiddenField->setParent($form, $form->getName());
 
 			$form->onValidate[] = [$this, 'onValidate'];
 		}
 
 		if ($form instanceof IPresenter) {
-			if (isset($form->imageStorage) && $form->imageStorage instanceof AbstractStorage) {
+			if (isset($form->imageStorage) && $form->imageStorage instanceof ImageStorage) {
 				$this->storage = $form->imageStorage;
 			} else {
-				$this->storage = $form->context->getByType('WebChemistry\Images\AbstractStorage');
+				$this->storage = $form->context->getByType(ImageStorage::class);
 			}
 
-			$this->image->setPrepend($this->getHtmlName());
+			$this->imageHiddenField->setPrepend($this->getHtmlName());
 
 			$this->preview->setPrepend($this->getHtmlName());
 			$this->preview->setStorage($this->storage);
 			$this->preview->onClick[] = function () {
-				$this->storage->delete($this->image->value);
+				$this->storage->delete($this->imageHiddenField->value);
 				$this->value = null;
 			};
 		}
@@ -92,13 +93,18 @@ class ImageUploadControl extends UploadControl
 	 */
 	public function onValidate(): void
 	{
+		$value = null;
 		if ($this->value instanceof FileUpload && $this->value->isOk()) {
-			if ($this->image->value) {
-				$this->storage->delete($this->image->value);
+			if ($this->imageHiddenField->value) {
+				$this->storage->delete($this->imageHiddenField->value);
 			}
-			$value = $this->storage->saveUpload($this->value, $this->namespace);
+			$resource = $this->storage->createUploadedResource($this->value);
+			$resource->setNamespace($this->namespace);
+			if ($this->storage->save($resource)) {
+				$value = $resource->getIdentifier();
+			}
 		} else {
-			$value = $this->image->value;
+			$value = $this->imageHiddenField->value;
 		}
 		$this->value = $value;
 		$this->preview->setImageName($value);
@@ -115,7 +121,7 @@ class ImageUploadControl extends UploadControl
 		$this->isValidated = true;
 
 		$this->preview->loadHttpData();
-		$this->image->loadHttpData();
+		$this->imageHiddenField->loadHttpData();
 
 		if (!$this->value->isOk()) {
 			$this->value = null;
@@ -171,7 +177,7 @@ class ImageUploadControl extends UploadControl
 		if ($this->value !== null) {
 			$this->preview->setImageName($this->value);
 		}
-		$this->image->value = $this->value;
+		$this->imageHiddenField->value = $this->value;
 
 		$control = Html::el('div');
 		if (($preview = $this->preview->getControl()) !== null) {
@@ -179,7 +185,7 @@ class ImageUploadControl extends UploadControl
 		}
 
 		$control->addHtml(parent::getControl())
-			->addHtml($this->image->getControl());
+			->addHtml($this->imageHiddenField->getControl());
 
 		return $control;
 	}

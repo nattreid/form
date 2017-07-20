@@ -11,7 +11,7 @@ use Nette\Forms\Controls\HiddenField;
  *
  * @author Attreid <attreid@gmail.com>
  */
-class Image extends HiddenField
+class ImageHiddenField extends HiddenField
 {
 
 	const NAME = '_uploaded';

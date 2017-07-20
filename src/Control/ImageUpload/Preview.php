@@ -4,11 +4,10 @@ declare(strict_types=1);
 
 namespace NAttreid\Form\Control\ImageUpload;
 
+use NAttreid\ImageStorage\ImageStorage;
 use Nette\Forms\Controls\SubmitButton;
 use Nette\Forms\Validator;
 use Nette\Utils\Html;
-use WebChemistry\Images\AbstractStorage;
-use WebChemistry\Images\Image\PropertyAccess;
 
 /**
  * Zobrazeni obrazku
@@ -25,7 +24,7 @@ class Preview extends SubmitButton
 	/** @var string */
 	private $imageName;
 
-	/** @var AbstractStorage */
+	/** @var ImageStorage */
 	private $storage;
 
 	/** @var string */
@@ -64,7 +63,7 @@ class Preview extends SubmitButton
 	 */
 	public function isOk(): bool
 	{
-		return $this->imageName && $this->getImageClass()->isExists();
+		return $this->imageName && $this->storage->getResource($this->imageName)->isOk();
 	}
 
 	/**
@@ -86,10 +85,10 @@ class Preview extends SubmitButton
 	}
 
 	/**
-	 * @param AbstractStorage $storage
+	 * @param ImageStorage $storage
 	 * @return self
 	 */
-	public function setStorage(AbstractStorage $storage): self
+	public function setStorage(ImageStorage $storage): self
 	{
 		$this->storage = $storage;
 		return $this;
@@ -134,11 +133,19 @@ class Preview extends SubmitButton
 		if ($this->isOk()) {
 			$container = null;
 			if ($this->size !== null) {
+				$resource = $this->storage->getResource($this->imageName, $this->size);
+
 				/* @var $container Html */
 				$container = Html::el('div')->setClass('upload-preview-image-container');
 				$el = Html::el('img')
 					->setClass('upload-preview-image')
-					->setSrc($this->storage->get($this->imageName, $this->size)->getLink());
+					->setSrc($this->storage->link($resource));
+				if ($resource->width) {
+					$el->setWidth($resource->width);
+				}
+				if ($resource->height) {
+					$el->setHeight($resource->height);
+				}
 				$container->addHtml($el);
 
 				if (!$this->required) {
@@ -150,17 +157,4 @@ class Preview extends SubmitButton
 			return null;
 		}
 	}
-
-	/**
-	 * @return PropertyAccess
-	 */
-	private function getImageClass(): PropertyAccess
-	{
-		$image = $this->storage->createImage();
-		$image->setAbsoluteName($this->imageName);
-		$image->setDefaultImage(null);
-
-		return $image;
-	}
-
 }
