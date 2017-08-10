@@ -33,4 +33,9 @@ trait Date
 			return parent::getValue();
 		}
 	}
+
+	public function setValue($value)
+	{
+		return parent::setValue($value instanceof DateTimeImmutable ? $value->format($this->htmlFormat) : $value);
+	}
 }
