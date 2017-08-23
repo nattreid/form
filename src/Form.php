@@ -40,6 +40,8 @@ use Nette\Forms\Controls\SelectBox;
  * @method ImageUploadControl addImageUpload(string $name, string $label = null, string $button = null, int $maxImageSize = 15) Prida upload obrazku
  * @method TextArea addTextEditor(string $name, string $label = null, int $cols = null, int $rows = null) Prida textovy editor
  * @method PhoneInput addPhone(string $name, string $label = null) Prida telefon
+ * @method TextInput addEmail($name, $label = null) Prida Email
+ * @method TextInput addInteger($name, $label = null) Prida cislo
  *
  * @author Attreid <attreid@gmail.com>
  */
