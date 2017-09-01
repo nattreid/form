@@ -32,11 +32,21 @@ class DateRange extends TextInput
 	/**
 	 * Nastavi format
 	 * @param string $format
-	 * @return self
+	 * @return DateRange
 	 */
 	public function setFormat(string $format): self
 	{
 		$this->format = $format;
+		return $this;
+	}
+
+	/**
+	 * Nastavi pouze rozmezi
+	 * @return DateRange
+	 */
+	public function useRangeOnly(): self
+	{
+		$this->setAttribute('data-only-range', 'true');
 		return $this;
 	}
 
