@@ -8,7 +8,7 @@ namespace NAttreid\Form\Control;
  * {@inheritdoc }
  *
  * @method TextInput disableAutocomplete(bool $disable = true)
- * @method TextInput setPlaceholder(string $value)
+ * @method TextInput setPlaceholder(string $value = null)
  *
  * @author Attreid <attreid@gmail.com>
  */

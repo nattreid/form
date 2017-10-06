@@ -16,9 +16,9 @@ trait Input
 	 * @param string $value
 	 * @return self
 	 */
-	public function setPlaceholder(string $value): self
+	public function setPlaceholder(string $value = null): self
 	{
-		$this->setAttribute('placeholder', $value);
+		$this->setAttribute('placeholder', $value ?? $this->caption);
 		return $this;
 	}
 }

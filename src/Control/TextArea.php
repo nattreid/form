@@ -7,7 +7,7 @@ namespace NAttreid\Form\Control;
 /**
  * {@inheritdoc }
  *
- * @method TextArea setPlaceholder(string $value)
+ * @method TextArea setPlaceholder(string $value = null)
  *
  * @author Attreid <attreid@gmail.com>
  */

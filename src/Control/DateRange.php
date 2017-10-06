@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NAttreid\Form\Control;
 
+use NAttreid\Form\Traits\Input;
 use NAttreid\Utils\Range;
 use Nette\Forms\Controls\TextBase;
 use Nette\Forms\Controls\TextInput;
@@ -17,6 +18,8 @@ use Nette\Utils\Html;
  */
 class DateRange extends TextInput
 {
+	use Input;
+
 	/**
 	 * Format datumu
 	 * @var string

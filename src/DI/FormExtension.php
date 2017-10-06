@@ -66,13 +66,13 @@ class FormExtension extends CompilerExtension
 			return $control;
 		});
 
-		ObjectMixin::setExtensionMethod(TextInput::class, 'setPlaceholder', function (TextInput $control, string $value) {
-			$control->setAttribute('placeholder', $value);
+		ObjectMixin::setExtensionMethod(TextInput::class, 'setPlaceholder', function (TextInput $control, string $value = null) {
+			$control->setAttribute('placeholder', $value ?? $control->caption);
 			return $control;
 		});
 
-		ObjectMixin::setExtensionMethod(TextArea::class, 'setPlaceholder', function (TextArea $control, string $value) {
-			$control->setAttribute('placeholder', $value);
+		ObjectMixin::setExtensionMethod(TextArea::class, 'setPlaceholder', function (TextArea $control, string $value = null) {
+			$control->setAttribute('placeholder', $value ?? $control->caption);
 			return $control;
 		});
 
