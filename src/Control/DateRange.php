@@ -25,7 +25,12 @@ class DateRange extends TextInput
 	 * @var string
 	 */
 	private $format = 'd.m.Y';
+
+	/** @var string */
 	private $delimiter = ' - ';
+
+	/** @var int[] */
+	private $dayIntervals = [7, 30];
 
 	public function __construct($label = null)
 	{
@@ -40,6 +45,34 @@ class DateRange extends TextInput
 	public function setFormat(string $format): self
 	{
 		$this->format = $format;
+		return $this;
+	}
+
+	/**
+	 * Prida interval
+	 * @param int $day
+	 * @return DateRange
+	 */
+	public function addDayInterval(int $day): self
+	{
+		if ($day > 0) {
+			$this->dayIntervals[] = $day;
+			sort($this->dayIntervals);
+		}
+		return $this;
+	}
+
+	/**
+	 * Nastavi interval
+	 * @param array $days
+	 * @return DateRange
+	 */
+	public function setDayInterval(array $days): self
+	{
+		$this->dayIntervals = [];
+		foreach ($days as $day) {
+			$this->addDayInterval($day);
+		}
 		return $this;
 	}
 
@@ -108,6 +141,7 @@ class DateRange extends TextInput
 
 		$control->class = 'form-daterange form-control';
 		$control->readonly = true;
+		$control->setAttribute('data-intervals', $this->dayIntervals);
 
 		return $control;
 	}
