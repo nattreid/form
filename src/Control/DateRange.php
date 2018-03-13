@@ -105,15 +105,15 @@ class DateRange extends TextInput
 	{
 		if (!empty($this->value)) {
 			$result = new Range;
-			list($from, $to) = explode($this->delimiter, $this->value);
+			@list($from, $to) = explode($this->delimiter, $this->value);
 
-			$result->from = DateTime::createFromFormat($this->format, $from);
-			$result->to = DateTime::createFromFormat($this->format, $to);
-
-			return $result;
-		} else {
-			return null;
+			if ($from && $to) {
+				$result->from = DateTime::createFromFormat($this->format, $from);
+				$result->to = DateTime::createFromFormat($this->format, $to);
+				return $result;
+			}
 		}
+		return null;
 	}
 
 	/**
