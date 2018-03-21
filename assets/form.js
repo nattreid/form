@@ -277,6 +277,8 @@ Nette.validators.NAttreidFormRules_validateImage = function (elem, arg, val) {
                 }
             }
         });
+
+        $('.tt-hint').removeAttr('data-nette-rules');
     }
 
     $(document).ready(typeahead);

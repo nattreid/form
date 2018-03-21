@@ -53,6 +53,8 @@
                 }
             }
         });
+
+        $('.tt-hint').removeAttr('data-nette-rules');
     }
 
     $(document).ready(typeahead);
