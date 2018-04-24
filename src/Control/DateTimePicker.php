@@ -7,6 +7,7 @@ namespace NAttreid\Form\Control;
 use NAttreid\Form\Traits\Date;
 use NAttreid\Form\Traits\Input;
 use Nette\Utils\Html;
+use Tracy\Debugger;
 
 /**
  * Datum a cas
@@ -17,6 +18,20 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 {
 	use Input,
 		Date;
+
+	/** @var int|null */
+	private $increment;
+
+
+	public function setValue($value)
+	{
+		if ($value instanceof \DateTime || $value instanceof \DateTimeImmutable) {
+			$minutes = $value->format('i');
+			$minutes = $minutes % $this->increment;
+			$value = $value->modify("-$minutes minute");
+		}
+		return parent::setValue($value);
+	}
 
 	/**
 	 * {@inheritdoc }
@@ -37,7 +52,7 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 	 */
 	public function setTimeIncrement(?int $increment)
 	{
-
+		$this->increment = $increment;
 		if ($increment !== null) {
 			$this->setAttribute('data-increment', $increment);
 		} else {
