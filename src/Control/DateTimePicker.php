@@ -31,4 +31,19 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 		return $control;
 	}
 
+	/**
+	 * @param int|null $increment
+	 * @return static
+	 */
+	public function setTimeIncrement(?int $increment)
+	{
+
+		if ($increment !== null) {
+			$this->setAttribute('data-increment', $increment);
+		} else {
+			$this->setAttribute('data-increment', null);
+		}
+		return $this;
+	}
+
 }

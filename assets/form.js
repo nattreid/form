@@ -123,18 +123,23 @@
         if ($(this).data('daterangepicker') === undefined) {
             var loc = locale.locale;
             loc.format = locale.format.date + ' ' + locale.format.time;
+            var increment = $(this).data('increment');
 
-            $(this).daterangepicker(
-                {
-                    showDropdowns: true,
-                    timePicker: true,
-                    timePicker24Hour: true,
-                    singleDatePicker: true,
-                    autoApply: true,
-                    autoUpdateInput: false,
-                    locale: loc
-                }
-            )
+            var data = {
+                showDropdowns: true,
+                timePicker: true,
+                timePicker24Hour: true,
+                singleDatePicker: true,
+                autoApply: true,
+                autoUpdateInput: false,
+                locale: loc
+            };
+
+            if (increment !== undefined) {
+                data.timePickerIncrement = increment;
+            }
+
+            $(this).daterangepicker(data)
                 .keyup(function (e) {
                     if (e.keyCode === 46) {
                         $(this).val('');
