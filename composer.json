@@ -14,7 +14,7 @@
   "require": {
     "php": ">= 7.1",
     "nattreid/utils": "~1.0",
-    "attreid/forms-replicator": "~1.4",
+    "webchemistry/forms-multiplier": "~3",
     "nette/forms": "~2.4",
     "nette/di": "~2.4",
     "nette/application": "~2.4",

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NAttreid\Form;
 
-use Kdyby\Replicator\Container;
 use NAttreid\Form\Control\DatePicker;
 use NAttreid\Form\Control\DateRange;
 use NAttreid\Form\Control\DateTimePicker;
@@ -18,11 +17,12 @@ use Nette\Forms\Controls\Checkbox;
 use Nette\Forms\Controls\CheckboxList;
 use Nette\Forms\Controls\MultiSelectBox;
 use Nette\Forms\Controls\SelectBox;
+use WebChemistry\Forms\Controls\Multiplier;
 
 /**
  * Interface IContainer
  *
- * @method Container addDynamic($name, callable $callable, $createDefault = 0, $forceDefault = false) Callable function(\Nette\Forms\Container $item)
+ * @method Multiplier addMultiplier($name, callable $callable, $copies = 1, $maxCopies = null) Callable function (\Nette\Forms\Container $container, \Nette\Forms\Form $form)
  * @method TextInput addText(string $name, $label = null, int $cols = null, int $maxLength = null)
  * @method TextArea addTextArea(string $name, $label = null, int $cols = null, int $rows = null)
  * @method TextInput addPassword(string $name, $label = null, int $cols = null, int $maxLength = null)
