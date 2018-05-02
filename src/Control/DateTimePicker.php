@@ -26,9 +26,11 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 	public function setValue($value)
 	{
 		if ($value instanceof \DateTime || $value instanceof \DateTimeImmutable) {
-			$minutes = $value->format('i');
-			$minutes = $minutes % $this->increment;
-			$value = $value->modify("-$minutes minute");
+			if ($this->increment) {
+				$minutes = $value->format('i');
+				$minutes = $minutes % $this->increment;
+				$value = $value->modify("-$minutes minute");
+			}
 		}
 		return parent::setValue($value);
 	}
@@ -52,7 +54,7 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 	 */
 	public function setTimeIncrement(?int $increment)
 	{
-		$this->increment = $increment;
+		$this->increment = (int) abs($increment);
 		if ($increment !== null) {
 			$this->setAttribute('data-increment', $increment);
 		} else {
