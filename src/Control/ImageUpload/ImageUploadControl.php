@@ -144,7 +144,7 @@ class ImageUploadControl extends UploadControl
 	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview(string $size): self
+	public function setPreview(string $size = '200x100'): self
 	{
 		$this->preview->setPreview($size);
 		return $this;

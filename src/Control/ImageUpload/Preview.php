@@ -109,7 +109,7 @@ class Preview extends SubmitButton
 	 * @param string $size napr. '200x500'
 	 * @return self
 	 */
-	public function setPreview(string $size = '200x100'): self
+	public function setPreview(string $size): self
 	{
 		$this->size = $size;
 		return $this;
