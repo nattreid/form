@@ -23,6 +23,8 @@
     "moment": "~2",
     "corejs-typeahead": "~1",
     "bootstrap-daterangepicker": "~2",
-    "nette-forms": "~2"
+    "nette-forms": "~2",
+    "ckeditor": "#full/4.5.9",
+    "spectrum": "~1"
   }
 }

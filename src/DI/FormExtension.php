@@ -11,6 +11,8 @@ use NAttreid\Form\Control\DateTimePicker;
 use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
 use NAttreid\Form\Control\PhoneInput;
+use NAttreid\Form\Control\Spectrum\SpectrumControl;
+use NAttreid\Form\Control\TextEditor;
 use NAttreid\Form\Control\Typeahead;
 use NAttreid\Form\Factories\FormFactory;
 use NAttreid\Utils\Date;
@@ -158,13 +160,16 @@ class FormExtension extends CompilerExtension
 			return $container[$name] = new ImageUploadControl($label, $button, $maxImageSize);
 		});
 
-		ObjectMixin::setExtensionMethod(Container::class, 'addTextEditor', function (Container $container, string $name, $label = null, int $cols = null, int $rows = null) {
-			return $container->addTextArea($name, $label, $cols, $rows)
-				->setAttribute('class', 'ckeditor');
+		ObjectMixin::setExtensionMethod(Container::class, 'addTextEditor', function (Container $container, string $name, $label = null) {
+			return $container[$name] = new TextEditor($label);
 		});
 
 		ObjectMixin::setExtensionMethod(Container::class, 'addPhone', function (Container $container, string $name, $label = null) {
 			return $container[$name] = new PhoneInput($label);
+		});
+
+		ObjectMixin::setExtensionMethod(Container::class, 'addColor', function (Container $container, string $name, $label = null) {
+			return $container[$name] = new SpectrumControl($label);
 		});
 	}
 }

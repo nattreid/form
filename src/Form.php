@@ -12,6 +12,7 @@ use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
 use NAttreid\Form\Control\PhoneInput;
 use NAttreid\Form\Control\TextArea;
+use NAttreid\Form\Control\TextEditor;
 use NAttreid\Form\Control\TextInput;
 use NAttreid\Form\Control\Typeahead;
 use Nette\Forms\Controls\BaseControl;
@@ -38,10 +39,11 @@ use Nette\Forms\Controls\SelectBox;
  * @method DateRange addDateRange(string $name, $label = null) Prida pole interval datumu
  * @method Typeahead addTypeahead(string $name, $label = null, callable $callback = null) Autocomplete
  * @method ImageUploadControl addImageUpload(string $name, $label = null, string $button = null, int $maxImageSize = 15) Prida upload obrazku
- * @method TextArea addTextEditor(string $name, $label = null, int $cols = null, int $rows = null) Prida textovy editor
+ * @method TextEditor addTextEditor(string $name, $label = null) Prida textovy editor
  * @method PhoneInput addPhone(string $name, $label = null) Prida telefon
  * @method TextInput addEmail($name, $label = null) Prida Email
  * @method TextInput addInteger($name, $label = null) Prida cislo
+ * @method TextInput addColor(string $name, $label = null) Prida barvu
  *
  * @author Attreid <attreid@gmail.com>
  */
