@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NAttreid\Form\Control\Spectrum;
 
 use Nette\Forms\Controls\TextInput;
+use Nette\Utils\Html;
 
 /**
  * Class Spectrum
@@ -23,5 +24,17 @@ class SpectrumControl extends TextInput
 	{
 		$value = parent::getValue();
 		return empty($value) ? null : new Color($value);
+	}
+
+	/**
+	 * {@inheritdoc }
+	 */
+	public function getControl(): Html
+	{
+		$control = parent::getControl();
+
+		$control->addClass('spectrum');
+
+		return $control;
 	}
 }

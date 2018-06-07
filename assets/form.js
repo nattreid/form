@@ -7,8 +7,8 @@
         return;
     }
 
-    function ckEditorLine() {
-        $('textarea.ckEditorLine').ckeditor({
+    function ckEditorInline() {
+        $('textarea.ckEditorInline').ckeditor({
             height: '80px',
             toolbarGroups: [
                 {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
@@ -28,8 +28,8 @@
         });
     }
 
-    $(document).ready(ckEditorLine);
-    $(document).ajaxComplete(ckEditorLine);
+    $(document).ready(ckEditorInline);
+    $(document).ajaxComplete(ckEditorInline);
 
 })(jQuery, window);
 (function ($, window) {
@@ -271,9 +271,10 @@ Nette.validators.NAttreidFormRules_validateImage = function (elem, arg, val) {
     }
 
     function spectrum() {
-        $('input.spectrumSelect').spectrum({
+        $('input.spectrum').spectrum({
             color: $(this).val(),
             showAlpha: true,
+            preferredFormat: 'rgb'
         });
     }
 

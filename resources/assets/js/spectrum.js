@@ -8,9 +8,10 @@
     }
 
     function spectrum() {
-        $('input.spectrumSelect').spectrum({
+        $('input.spectrum').spectrum({
             color: $(this).val(),
             showAlpha: true,
+            preferredFormat: 'rgb'
         });
     }
 

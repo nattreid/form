@@ -14,11 +14,16 @@ use Nette\Utils\Html;
 class TextEditor extends \Nette\Forms\Controls\TextArea
 {
 	/** @var bool */
-	private $line = false;
+	private $inline = false;
 
-	public function setCkEditorLine(bool $line = true): void
+	/**
+	 * @param bool $inline
+	 * @return static
+	 */
+	public function setInline(bool $inline = true)
 	{
-		$this->line = $line;
+		$this->inline = $inline;
+		return $this;
 	}
 
 	/**
@@ -26,11 +31,10 @@ class TextEditor extends \Nette\Forms\Controls\TextArea
 	 */
 	public function getControl(): Html
 	{
-		$this->htmlType = 'text';
 		$control = parent::getControl();
 
-		if ($this->line) {
-			$control->addClass('ckEditorLine');
+		if ($this->inline) {
+			$control->addClass('ckEditorInline');
 		} else {
 			$control->addClass('ckeditor');
 		}
