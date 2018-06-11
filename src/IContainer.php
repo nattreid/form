@@ -11,6 +11,7 @@ use NAttreid\Form\Control\DateTimePicker;
 use NAttreid\Form\Control\ImageUpload\ImageUploadControl;
 use NAttreid\Form\Control\LinkControl;
 use NAttreid\Form\Control\PhoneInput;
+use NAttreid\Form\Control\Spectrum\SpectrumControl;
 use NAttreid\Form\Control\TextArea;
 use NAttreid\Form\Control\TextEditor;
 use NAttreid\Form\Control\TextInput;
@@ -41,7 +42,7 @@ use Nette\Forms\Controls\SelectBox;
  * @method PhoneInput addPhone(string $name, $label = null) Prida telefon
  * @method TextInput addEmail(string $name, $label = null) Prida Email
  * @method TextInput addInteger(string $name, $label = null) Prida cislo
- * @method TextInput addColor(string $name, $label = null) Prida barvu
+ * @method SpectrumControl addColor(string $name, $label = null) Prida barvu
  *
  * @package NAttreid\Form
  */
