@@ -41,7 +41,7 @@ class Color
 	{
 		if (Strings::startsWith($color, 'rgb')) {
 			@list(, $this->red, $this->green, $this->blue, , $opacity) = Strings::match($color, '/rgba?\s*\(([0-9]+),\s*([0-9]+),\s*([0-9]+)(,\s*([0-9|\.]+)\s*)?\)/');
-		} elseif (Strings::startsWith('$color', '#')) {
+		} elseif (Strings::startsWith($color, '#')) {
 			@list($this->red, $this->green, $this->blue, $opacity) = sscanf($color, "#%02x%02x%02x%02x");
 			$opacity = round($opacity / 255, 2);
 		} else {
