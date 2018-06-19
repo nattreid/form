@@ -11,6 +11,7 @@
         $('input.spectrum').spectrum({
             color: $(this).val(),
             showAlpha: true,
+            showInput: true,
             preferredFormat: 'rgb'
         });
     }
