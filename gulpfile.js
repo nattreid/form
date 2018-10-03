@@ -44,8 +44,8 @@ gulp.task('cssMin', function () {
 });
 
 gulp.task('watch', function () {
-    gulp.watch(paths.dev.js + '*.js', ['js', 'jsMin']);
-    gulp.watch(paths.dev.less + '*.less', ['css', 'cssMin']);
+    gulp.watch(paths.dev.js + '*.js', gulp.series('js', 'jsMin'));
+    gulp.watch(paths.dev.less + '*.less', gulp.series('css', 'cssMin'));
 });
 
-gulp.task('default', ['js', 'jsMin', 'css', 'cssMin', 'watch']);
+gulp.task('default', gulp.series('js', 'jsMin', 'css', 'cssMin', 'watch'));
