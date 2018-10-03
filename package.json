@@ -11,7 +11,7 @@
   "license": "MIT",
   "dependencies": {
 	"jquery": "~3",
-	"moment": "~2",
+	"moment": "~>2.19.3",
 	"corejs-typeahead": "~1",
 	"bootstrap-daterangepicker": "~3",
 	"nette-forms": "~2",
