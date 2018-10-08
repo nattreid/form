@@ -1,28 +1,28 @@
 {
-  "name": "nattreid-form",
-  "description": "Form extension for Nette Framework",
-  "version": "1.7.1",
-  "main": "./assets/form.js",
-  "repository": {
-	"type": "git",
-	"url": "git@github.com:nattreid/form.git"
-  },
-  "author": "Attreid",
-  "license": "MIT",
-  "dependencies": {
-	"jquery": "~3",
-	"moment": "~>2.19.3",
-	"corejs-typeahead": "~1",
-	"bootstrap-daterangepicker": "~3",
-	"nette-forms": "~2",
-	"ckeditor-full": "~4",
-	"spectrum": "~1"
-  },
-  "devDependencies": {
-	"gulp": "~4",
-	"gulp-concat": "~2",
-	"gulp-uglify": "~3",
-	"gulp-less": "~4",
-	"gulp-clean-css": "~3"
-  }
+	"name": "nattreid-form",
+	"description": "Form extension for Nette Framework",
+	"version": "1.7.2",
+	"main": "./assets/form.js",
+	"repository": {
+		"type": "git",
+		"url": "git@github.com:nattreid/form.git"
+	},
+	"author": "Attreid",
+	"license": "MIT",
+	"dependencies": {
+		"jquery": "~3",
+		"moment": "~>2.19.3",
+		"corejs-typeahead": "~1",
+		"bootstrap-daterangepicker": "~3",
+		"nette-forms": "~2",
+		"ckeditor-full": "~4",
+		"spectrum-colorpicker": "~1"
+	},
+	"devDependencies": {
+		"gulp": "~4",
+		"gulp-concat": "~2",
+		"gulp-uglify": "~3",
+		"gulp-less": "~4",
+		"gulp-clean-css": "~3"
+	}
 }
