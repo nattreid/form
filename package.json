@@ -1,7 +1,7 @@
 {
 	"name": "nattreid-form",
 	"description": "Form extension for Nette Framework",
-	"version": "1.7.3",
+	"version": "1.7.4",
 	"main": "./assets/form.js",
 	"repository": {
 		"type": "git",
