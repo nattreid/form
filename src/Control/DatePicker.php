@@ -27,6 +27,7 @@ class DatePicker extends \Nextras\Forms\Controls\DatePicker
 		$control = parent::getControl();
 
 		$control->addClass('form-date');
+		$control->setAttribute('autocomplete', 'off');
 
 		return $control;
 	}

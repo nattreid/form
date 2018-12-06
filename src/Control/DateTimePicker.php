@@ -44,6 +44,7 @@ class DateTimePicker extends \Nextras\Forms\Controls\DateTimePicker
 		$control = parent::getControl();
 
 		$control->addClass('form-datetime');
+		$control->setAttribute('autocomplete', 'off');
 
 		return $control;
 	}

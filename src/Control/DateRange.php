@@ -139,7 +139,8 @@ class DateRange extends TextInput
 	{
 		$control = parent::getControl();
 
-		$control->class = 'form-daterange form-control';
+		$control->addClass('form-daterange');
+
 		$control->readonly = true;
 		$control->setAttribute('data-intervals', $this->dayIntervals);
 
