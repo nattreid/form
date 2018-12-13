@@ -42,4 +42,11 @@ class Typeahead extends \Nextras\Forms\Controls\Typeahead
 		$this->setAttribute('data-empty-message', $this->translate($message));
 		return $this;
 	}
+
+	public function setSuggestionCallback(string $callback, string $display): self
+	{
+		$this->setAttribute('data-suggestion-callback', $callback);
+		$this->setAttribute('data-suggestion-display', $display);
+		return $this;
+	}
 }

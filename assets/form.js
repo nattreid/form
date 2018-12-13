@@ -335,17 +335,20 @@ Nette.validators.NAttreidFormRules_validateImage = function (elem, arg, val) {
                 var dataset = {
                     source: source
                 };
+                if ($(this).data('suggestion-display') !== undefined) {
+                    dataset.display = $(this).data('suggestion-display');
+                }
                 if ($(this).data('limit') !== undefined) {
                     dataset.limit = $(this).data('limit');
                 }
+
+                dataset.templates = {};
                 if ($(this).data('empty-message') !== undefined) {
-                    dataset.templates = {
-                        empty: [
-                            '<div class="empty-message">',
-                            $(this).data('empty-message'),
-                            '</div>'
-                        ].join('\n')
-                    };
+                    dataset.templates.empty = '<div class="empty-message">' + $(this).data('empty-message') + '</div>';
+                }
+                if ($(this).data('suggestion-callback') !== undefined) {
+                    var callback = $(this).data('suggestion-callback');
+                    dataset.templates.suggestion = eval(callback);
                 }
 
                 $(this).typeahead(options, dataset);
