@@ -66,7 +66,7 @@ class Color
 
 	protected function getRed(): int
 	{
-		return $this->red;
+		return intval($this->red);
 	}
 
 	protected function setRed(int $red)
@@ -79,7 +79,7 @@ class Color
 
 	protected function getGreen(): int
 	{
-		return $this->green;
+		return intval($this->green);
 	}
 
 	protected function setGreen(int $green)
@@ -92,7 +92,7 @@ class Color
 
 	protected function getBlue(): int
 	{
-		return $this->blue;
+		return intval($this->blue);
 	}
 
 	protected function setBlue(int $blue)
