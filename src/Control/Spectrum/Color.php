@@ -64,6 +64,19 @@ class Color
 		}
 	}
 
+	public function changeBrightness(int $steps): self
+	{
+		$this->red += $steps;
+		$this->blue += $steps;
+		$this->green += $steps;
+
+		$this->red = max(min($this->red, 255), 0);
+		$this->blue = max(min($this->blue, 255), 0);
+		$this->green = max(min($this->green, 255), 0);
+
+		return $this;
+	}
+
 	protected function getRed(): int
 	{
 		return intval($this->red);
