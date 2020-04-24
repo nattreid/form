@@ -10,15 +10,15 @@
     function ckEditorInline() {
         $('textarea.ckEditorInline').ckeditor({
             height: '80px',
-            toolbarGroups: [
-                {name: 'basicstyles', groups: ['basicstyles', 'cleanup']},
-                {name: 'paragraph', groups: ['align']},
-                {name: 'styles', groups: ['styles']},
-                {name: 'colors', groups: ['colors']}
+            toolbar: [
+                {name: 'basicstyles', items: ['Bold', 'Italic', 'Underline', 'Strike', '-', 'CopyFormatting', 'RemoveFormat']},
+                {name: 'paragraph', items: ['JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']},
+                {name: 'links', items: ['Link', 'Unlink']},
+                {name: 'insert', items: ['Image', 'Table']},
+                {name: 'styles', items: ['Font', 'FontSize']},
+                {name: 'colors', items: ['TextColor']}
             ],
             enterMode: CKEDITOR.ENTER_BR,
-            removeButtons: 'BGColor,Styles,Format,Underline,Strike,Subscript,Superscript',
-            removePlugins: 'elementspath',
             resize_enabled: false,
             on: {
                 change: function (evt) {
