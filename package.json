@@ -1,7 +1,7 @@
 {
 	"name": "nattreid-form",
 	"description": "Form extension for Nette Framework",
-	"version": "1.7.10",
+	"version": "1.7.11",
 	"main": "./assets/form.js",
 	"repository": {
 		"type": "git",
@@ -13,9 +13,9 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"jquery": "~3.4",
-		"moment": "~>2.19.3",
-		"corejs-typeahead": "~1.2",
+		"jquery": "~3.5",
+		"moment": "~2.24",
+		"corejs-typeahead": "~1.3",
 		"bootstrap-daterangepicker": "~3.0",
 		"nette-forms": "~2.4",
 		"ckeditor-full": "~4.7",
