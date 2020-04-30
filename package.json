@@ -13,7 +13,7 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"jquery": "~3.4",
+		"jquery": "~3.5",
 		"moment": "~>2.19.3",
 		"corejs-typeahead": "~1.2",
 		"bootstrap-daterangepicker": "~3.0",
