@@ -127,7 +127,7 @@ class Preview extends SubmitButton
 	/**
 	 * {@inheritdoc }
 	 */
-	public function getControl($caption = null): ?Html
+	public function getControl($caption = null): Html
 	{
 		$button = parent::getControl($caption);
 		if ($this->isOk()) {
@@ -154,7 +154,7 @@ class Preview extends SubmitButton
 			}
 			return $container;
 		} else {
-			return null;
+			return Html::el();
 		}
 	}
 }

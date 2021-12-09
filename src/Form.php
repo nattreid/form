@@ -101,7 +101,7 @@ class Form extends \Nette\Application\UI\Form
 	/**
 	 * {@inheritdoc }
 	 */
-	public function render(...$args)
+	public function render(...$args): void
 	{
 		if ($this->noLiveJsValidate) {
 			foreach ($this->getControls() as $control) {
@@ -116,6 +116,6 @@ class Form extends \Nette\Application\UI\Form
 				}
 			}
 		}
-		parent::render($args);
+		parent::render(...$args);
 	}
 }

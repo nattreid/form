@@ -12,9 +12,10 @@ use Nette\Forms\Controls\RadioList;
 use Nette\Forms\Controls\SelectBox;
 use Nette\Forms\Controls\TextBase;
 use Nette\Forms\Form;
-use Nette\Forms\IControl;
+use Nette\Forms\Control;
 use Nette\Forms\Rendering\DefaultFormRenderer;
 use Nette\InvalidStateException;
+use Nette\Utils\Html;
 
 
 /**
@@ -44,49 +45,49 @@ abstract class BootstrapRenderer extends DefaultFormRenderer
 		$this->wrappers['error']['item'] = 'div class="alert alert-danger"';
 	}
 
-	public function renderBegin()
+	public function renderBegin(): string
 	{
 		$this->controlsInit();
 		return parent::renderBegin();
 	}
 
-	public function renderEnd()
+	public function renderEnd(): string
 	{
 		$this->controlsInit();
 		return parent::renderEnd();
 	}
 
-	public function renderBody()
+	public function renderBody(): string
 	{
 		$this->controlsInit();
 		return parent::renderBody();
 	}
 
-	public function renderControls($parent)
+	public function renderControls($parent): string
 	{
 		$this->controlsInit();
 		return parent::renderControls($parent);
 	}
 
-	public function renderPair(IControl $control)
+	public function renderPair(Control $control): string
 	{
 		$this->controlsInit();
 		return parent::renderPair($control);
 	}
 
-	public function renderPairMulti(array $controls)
+	public function renderPairMulti(array $controls): string
 	{
 		$this->controlsInit();
 		return parent::renderPairMulti($controls);
 	}
 
-	public function renderLabel(IControl $control)
+	public function renderLabel(Control $control): Html
 	{
 		$this->controlsInit();
 		return parent::renderLabel($control);
 	}
 
-	public function renderControl(IControl $control)
+	public function renderControl(Control $control): Html
 	{
 		$this->controlsInit();
 		return parent::renderControl($control);
